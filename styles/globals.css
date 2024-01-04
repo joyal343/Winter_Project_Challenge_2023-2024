@@ -1,0 +1,248 @@
+:root{
+    --black: #222222;
+    --orange: #eb5757;
+    --bg-grey: #f4f4f7;
+    --text-nav: black;
+    --nav-col:#ffffff;
+    --text-col-dark:black;
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+input{
+    outline: none; /* Gets rid of outline on select */
+    border: none;
+    font: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.flex_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex_column{
+    display: flex;
+    flex-direction: column;
+}
+/* News Page */
+.NewsPage{
+    display: flex;
+    background-color: var(--bg-grey);
+}
+/* News page left div */
+.NewsPageLeft{
+    width: 60%;
+    padding: 0px 0px 0px 30px;
+    margin-top: 40px;
+}
+
+.NewsPageHeading{
+    font-size: 48px;
+    font-weight: 700;
+    background: #121FCF;
+    background: -webkit-linear-gradient(to bottom right, #121FCF 0%, #00C8CF 57%);
+    background: -moz-linear-gradient(to bottom right, #121FCF 0%, #00C8CF 57%);
+    background: linear-gradient(to bottom right, #121FCF 0%, #00C8CF 57%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+/* News page right div */
+.NewsPageRight{
+    margin-top: 40px;
+    padding: 0px 30px 0px 0px;
+    width: 40%;
+}
+
+
+/* Search */
+.searchBar{
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 20px;
+    
+}
+
+.searchBar > input {
+    flex-grow: 1;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 7px 0px 7px 10px;
+    font-size:16px ;
+
+}
+
+
+.searchButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+
+}
+
+.searchButton > button {
+    width: 20px;
+    height: 20px;
+}
+
+.filters{
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.17);
+-moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.17);
+box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.17);
+background-color: white;
+padding: 15px;
+width: 60%;
+}
+
+.filter_head{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.filter_item{
+    margin-bottom: 20px;
+}
+
+.filter_sep{
+    margin-bottom: 20px;
+    color:var(--text-nav);
+}
+.filter_text{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.filter_box{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+/* END SEARCH */
+/* NewsList */
+.NewsList{
+    width: 90%;
+    margin-top: 30px;
+    /* padding: 0px 5px; */
+    /* margin-top: 30vh; for above space */
+    /* margin-left: 30px; parent container handles it*/
+}
+/*NewsItem*/
+.ListItemContainer{
+    margin-bottom: 10px;
+}
+.banner{
+    width: 100%;
+    background-color: var(--orange);
+    height: 20px;
+}
+.ListItem{
+    background-color: white;
+    /* border: 1px solid var(--black); */
+    border-radius: 5px;
+    padding: 20px;
+    color: var(--text-nav);
+}
+
+.LIHeading{
+    font-size: 20px;
+    color: var(--text-col-dark);
+}
+
+.LIDate{
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.LIDesc{
+    font-size: 18px;
+    margin-top: 10px;
+}
+/* Options */
+.options{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--black);
+    background-color: rgb(167, 167, 167);
+}
+/* NAVBAR */
+
+.navbar{
+    display: flex;
+    background-color: var(--nav-col);
+    padding: 15px;
+    color: var(--text-nav);
+    align-items: center;
+    border-bottom:1px solid var(--text-col-dark) ;
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: 30px  auto ;
+    gap: 5px;
+    margin-right: 20px;
+}
+
+.logo_text{
+    font-size: 28px;
+    margin-bottom: 3px;  
+    color: var(--text-col-dark);
+}
+
+.logo_color{
+    filter: invert(84%) sepia(6%) saturate(58%) hue-rotate(202deg) brightness(87%) contrast(88%);
+}
+.nav_links{
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.register{
+    background-color: var(--orange);
+    border: 1px solid var(--orange);
+    color: white;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.login{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 7px;
+    margin-right: 10px;
+}
+
+.nav_auth{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+    align-items: center;
+}
