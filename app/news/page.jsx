@@ -1,5 +1,6 @@
 'use client';
 
+import styles from "./NewsPage.module.css";
 import { useState, useEffect } from 'react';
 import NewsItem from '@components/NewsItem';
 import Search from '@components/Search';
@@ -16,11 +17,13 @@ const poppins=Poppins(
 const NewsItemsList = ({ posts }) => {
     return (
         <div className='NewsList'>
+            <div className={styles.results}>{"Results "+posts.length}</div>
             {posts.map((post) => {
                 return <NewsItem
                     title={post.title}
                     date={post.date}
                     desc={post.desc}
+                    annType ={post.annType}
                 />
             })}
         </div>
@@ -59,9 +62,6 @@ const page = () => {
     return (
         <div className='NewsPage'>
             <div className='NewsPageLeft'>
-                <div className={'NewsPageHeading '+poppins.className}>
-                    Announcements
-                </div>
                 <NewsItemsList posts={currPosts} />
             </div>
             <div className="NewsPageRight">

@@ -1,0 +1,71 @@
+.filter_white{
+filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(160deg) brightness(104%) contrast(104%);
+}
+
+.b_text{
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.b_img{
+    display: flex;
+    align-items: center;
+}
+
+.banner{
+    display: flex;
+    width: calc(100%-20px);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+}
+
+.Academic_banner{
+    background-color: #525CEB;
+}
+.Clubs_banner{
+    background-color: #9ADE7B;
+}
+.Sports_banner{
+    background-color: #F4F27E;
+}
+.Research_banner{
+    background-color: #711DB0;
+}
+.Employment_banner{
+    background-color: var(--orange);
+}
+.Tenders_banner{
+    background-color: #B6BBC4;
+}
+
+.ListItemContainer{
+    margin-bottom: 10px;
+}
+
+
+.ListItem{
+    background-color: white;
+    /* border: 1px solid var(--black); */
+    border-radius: 5px;
+    padding: 20px;
+    color: var(--text-nav);
+}
+
+.LIHeading{
+    font-size: 28px;
+    color: var(--text-col-dark);
+}
+
+.LIDate{
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.LIDesc{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
