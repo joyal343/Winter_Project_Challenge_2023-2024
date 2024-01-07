@@ -4,16 +4,7 @@ import styles from "./NewsPage.module.css";
 import { useState, useEffect } from 'react';
 import NewsItem from '@components/NewsItem';
 import Search from '@components/Search';
-import {Poppins} from "next/font/google"
 
-const poppins=Poppins(
-    {
-        subsets:['latin'],   
-        weight:'700'
-    }
-
-)
-// ADDED POPPINS TO HEADING
 const NewsItemsList = ({ posts }) => {
     return (
         <div className='NewsList'>

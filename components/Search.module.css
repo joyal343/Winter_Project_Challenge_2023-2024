@@ -1,0 +1,40 @@
+.filters{
+    padding: 15px;
+    width: 70%;
+    margin-right: auto;
+}
+
+.searchBar{
+    border: 1px solid var(--search-border);
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 20px;
+    
+}
+
+.searchBar > input {
+    flex-grow: 1;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px 0px 5px 2px;
+    font-size:18px ;
+    color: #6c757d;
+}
+
+
+.searchButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+
+}
+
+.searchButton > button {
+    width: 20px;
+    height: 20px;
+}
+
+.search_inp{
+    width: 100%;
+}

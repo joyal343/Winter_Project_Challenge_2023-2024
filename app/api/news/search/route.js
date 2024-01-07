@@ -1,5 +1,5 @@
 import { connectToDB } from "@utils/database";
-import Post from '@models/post2';
+import Post from '@models/post3';
 // prioirDate = new Date(new Date().setDate(today.getDate()-30));
 // prioirDate = new Date(new Date().setDate(today.getDate()-90));
 // prioirDate = new Date(new Date().setDate(today.getDate()-183));
