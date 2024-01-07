@@ -19,6 +19,8 @@ const NewsItemsList = ({ posts,handleDel }) => {
                     id={post._id}
                     key={post._id}
                     handleDel={handleDel}
+                    hasImg={post.picture==="" ? false : true}
+                    imgURL={"/assets/uploaded_images/"+post.picture}
                 />
             })}
         </div>
@@ -31,7 +33,6 @@ const page = () => {
             const response = await fetch('/api/news/allnews');
             const data = await response.json();
             setCurrPosts(data);
-            console.log(data);
         }
         fetchPosts();
     }, []);

@@ -3,13 +3,6 @@
 import styles from './NewsItem.module.css';
 import NewsItemImage from './NewsItemImage.jsx';
 import Image from 'next/image';
-import { Roboto } from 'next/font/google'
-const roboto = Roboto({
-    weight: '700',
-    style: 'normal',
-    subsets: ['latin'],
-})
-
 
 const NewsItem = (props) => {
     console.log(props.date);
@@ -19,8 +12,8 @@ const NewsItem = (props) => {
         <div className={styles.ListItemContainer}>
             <div className={styles.image_container}>
                 <NewsItemImage
-                    hasImg={false}
-                    ImgURL={""}
+                    hasImg={props.hasImg}
+                    ImgURL={props.imgURL}
                     annType={props.annType}
                 />
             </div>
@@ -56,7 +49,6 @@ const NewsItem = (props) => {
             </div>
             :<></>}
         </div>
-
     )
 }
 

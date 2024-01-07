@@ -15,6 +15,9 @@ const NewsItemsList = ({ posts }) => {
                     date={post.date}
                     desc={post.desc}
                     annType ={post.annType}
+                    key={post._id}
+                    hasImg={post.picture==="" ? false : true}
+                    imgURL={".assets/uploaded_images/"+post.picture}
                 />
             })}
         </div>

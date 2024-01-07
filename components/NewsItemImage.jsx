@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "./NewsItem.module.css" 
 
 const NewsItemImage = ({ hasImg, ImgURL, annType }) => {
+    console.log(ImgURL);
     function handleImage(annType) {
         return `\\assets\\icons\\${annType}.svg`
     }
