@@ -1,13 +1,13 @@
-'use client';
-
-import styles from "./NewsPage.module.css";
+"use client";
+import styles from "./DeletePost.module.css";
+import SideBar from "@components/SideBar";
+import NewsItem from "@components/NewsItem";
+import SearchBar from "@components/Search";
 import { useState, useEffect } from 'react';
-import NewsItem from '@components/NewsItem';
-import Search from '@components/Search';
-
-const NewsItemsList = ({ posts }) => {
+const NewsItemsList = ({ posts,handleDel }) => {
+    
     return (
-        <div className='NewsList'>
+        <div className={styles.NewsList}>
             <div className={styles.results}>{"Results "+posts.length}</div>
             {posts.map((post) => {
                 return <NewsItem
@@ -15,28 +15,40 @@ const NewsItemsList = ({ posts }) => {
                     date={post.date}
                     desc={post.desc}
                     annType ={post.annType}
+                    del={true}
+                    id={post._id}
                     key={post._id}
+                    handleDel={handleDel}
                     hasImg={post.picture==="" ? false : true}
-                    imgURL={".assets/uploaded_images/"+post.picture}
+                    imgURL={"/assets/uploaded_images/"+post.picture}
                 />
             })}
         </div>
     )
 }
-
-
 const page = () => {
     const [currPosts,setCurrPosts]=useState([]);
-
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch('/api/news/allnews');
             const data = await response.json();
             setCurrPosts(data);
-            console.log(data);
         }
         fetchPosts();
     }, []);
+    
+    async function handleDel(id){
+        console.log(id);
+        const response = await fetch('/api/news/allnews',{
+            method:"DELETE",
+            body:JSON.stringify({
+                id:id
+            })
+        });
+        const res = await response.json();
+        console.log(res);
+        handleSearch("",[true,false,false,false,false],"","")
+    }
 
     const handleSearch = async (text,pDate,type,dept) =>{
         const response = await fetch('/api/news/search',{
@@ -52,17 +64,21 @@ const page = () => {
         console.log(data);
         setCurrPosts(data);
     }
-
-    return (
-        <div className='NewsPage'>
-            <div className='NewsPageLeft'>
-                <NewsItemsList posts={currPosts} />
-            </div>
-            <div className="NewsPageRight">
-                <Search handleSearch={handleSearch} />
-            </div>
+  return (
+    <div className={styles.main}>
+        <div className={styles.sidebar}>
+            <SideBar links={["Create Announcement","Delete Announcement"]}
+            linkURL={["\\admin\\addpost","\\admin\\deletepost"]}
+            />
         </div>
-    )
+    <div className={styles.delpost}>
+       < NewsItemsList 
+       posts={currPosts}
+       handleDel={handleDel}/>
+       <SearchBar handleSearch={handleSearch} isdel={true}/>
+    </div>
+    </div>
+  )
 }
 
 export default page

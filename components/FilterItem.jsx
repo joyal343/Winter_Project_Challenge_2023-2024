@@ -20,10 +20,10 @@ const FilterItem = (props) => {
         <li className='filter_box' style={{gap:"18px"}}>
             <button onClick={handleClick} className='flex_center'>
                 <Image
-                    src={props.state[props.ind] ? "assets\\icons\\check2-circle.svg" : "assets\\icons\\circle.svg"}
+                    src={props.state[props.ind] ? "\\assets\\icons\\Check_Box_Ticked.svg" : "\\assets\\icons\\Check_Box_UnTicked.svg"}
                     alt=""
-                    width={props.state[props.ind] ? 17 : 15 }
-                    height={props.state[props.ind] ? 17 : 15}
+                    width={17}
+                    height={17}
                 />
             </button>
             <div className="filter_text">

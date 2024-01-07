@@ -3,10 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {Open_Sans} from "next/font/google"
 
-const open_sans=Open_Sans(
-    {
-        subsets:['latin'],   
-    })
+// const open_sans=Open_Sans(
+//     {
+
+//         weight:400,
+//         subsets:['latin'],   
+//     })
 
 const page = () => {
 

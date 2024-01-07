@@ -15,14 +15,13 @@ const PostSchema= new Schema({
     },
     annDept:{
         type:String,
+    },
+    picture:{
+        type:String,
     }
-
 
 });
 
-// match can be used to set Regular Expression constraint 
-// type is academic,research,employment,clubs,sports,tenders
-//department CSE MCE 
-const Post2 =models.Post2 || model("Post2",PostSchema);
-// models.Post ||
-export default Post2;
+const Post3 =models.Post3 || model("Post3",PostSchema);
+
+export default Post3;
