@@ -8,7 +8,7 @@ styling.txt
 .yarn/install-state.gz
 
 # Ignore all PDF files
-*.pdf
+# *.pdf
 
 # testing
 /coverage
