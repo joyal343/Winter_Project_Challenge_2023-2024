@@ -8,7 +8,8 @@ import fs from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const uploadURL =__dirname.substring(0,__dirname.length - 13)+"\\public\\assets\\uploaded_images";
-export const POST = async (req)=>{
+
+export async function POST(req){
     // GET FORM DATA
     const data = await req.formData();
     const file = data.get('file');
@@ -29,16 +30,15 @@ export const POST = async (req)=>{
     // GET BUFFER
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    // GET ID
-    const idFile = fs.readFileSync(uploadURL+"\\id.txt");
-    var id=Number(idFile[0]);
-    id++;
+    // GET ID FOR FILE NAME
+    const idFile = fs.readFileSync(uploadURL+"\\id.txt",'utf8');
+    var id= Number(idFile) + 1;
     fs.writeFileSync(uploadURL+"\\id.txt",id.toString());
     // CREATE FILE
     await writeFile(uploadURL+"\\"+id+file.name,buffer);
-    // CONNECT TO DB
+
+    // CONNECT TO DB and Write Post
     await connectToDB();
-    // CREATE POST
     const newPost = new Post({
     title:data.get("title"),
     date:new Date(),
@@ -47,7 +47,7 @@ export const POST = async (req)=>{
     annDept:data.get("dept"),
     picture:id+file.name,
     })
-    // SAVE TO DB
+    // SAVE TO DB and Send Response
     await newPost.save();
     return NextResponse.json({success:true});
 

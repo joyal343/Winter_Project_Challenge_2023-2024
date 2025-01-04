@@ -21,6 +21,9 @@ const NewsItem = (props) => {
                 <div className={styles.LIHeading}>
                     {props.title}
                 </div>
+                <div className={styles.LIDesc}>
+                    {props.desc && (props.desc.length > 100 ? props.desc.substring(0, 100) + "..." : props.desc)}
+                </div>
                 <div className={styles.LIDate}>
                     {
                         (props.date.substring(8, 10) === "01" ?
@@ -33,9 +36,7 @@ const NewsItem = (props) => {
                         props.date.substring(0, 4)
                     }
                 </div>
-                <div className={styles.LIDesc}>
-                    {props.desc && (props.desc.length > 100 ? props.desc.substring(0, 100) + "..." : props.desc)}
-                </div>
+                
             </div>
             {props.del ? 
             <div className={styles.delBtn}>

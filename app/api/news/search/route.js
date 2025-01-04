@@ -85,7 +85,7 @@ export const POST = async (req) =>{
                 postString=postString.toLowerCase();
                 return postString.match(searchTermRegex);
             });
-            console.log(currPosts);
+            // console.log(currPosts);
             return new Response(JSON.stringify(currPosts),{status:201})
         }
 
