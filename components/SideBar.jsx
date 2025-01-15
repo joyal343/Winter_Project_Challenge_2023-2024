@@ -14,7 +14,7 @@ const SideBar = ({links,linkURL}) => {
                 <h2 className={styles.username}>John Doe</h2>
             </div>
             <div className={styles.links}>
-                {links.map((link,index)=>(<Link href={linkURL[index]}>{link}</Link>))}
+                {links.map((link,index)=>(<Link key={index} href={linkURL[index]}>{link}</Link>))}
             </div>
         </div>
     )
