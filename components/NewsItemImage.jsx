@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./NewsItem.module.css" 
+import Image from 'next/image'
 
 const NewsItemImage = ({ hasImg, ImgURL, annType }) => {
     console.log(ImgURL);
@@ -8,21 +9,25 @@ const NewsItemImage = ({ hasImg, ImgURL, annType }) => {
     }
     return (
         hasImg ?
-            <div className={styles.image}>
-                <img
-                src={ImgURL}
-                alt="" 
+            (<div className={styles.image}>
+                <Image
+                    width={75}
+                    height={75}
+                    src={ImgURL}
+                    alt="announcement image" 
                 />
-            </div>
+            </div>)
         
             :
-            <div className={styles.image}>
-                <img
+            (<div className={styles.image}>
+                <Image
+                    width={75}
+                    height={75}
                     src={handleImage(annType)}
-                    alt=""
+                    alt="announcement image"
                     className='filter_light_grey'
                 />
-            </div>
+            </div>)
     )
 }
 

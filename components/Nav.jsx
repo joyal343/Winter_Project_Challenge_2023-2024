@@ -19,14 +19,19 @@ const Nav = () => {
                     <p className='logo_text flex_center'>Alerts!</p>
                 </Link>
                 <div className="underline-elt_wrapper">                    
-                    <Link href='/news' className={"nav_links underline_elt "}>Home</Link>
+                    <Link href='/' className={"nav_links underline_elt "}>Home</Link>
                 </div>
                 <div className="underline-elt_wrapper">                    
                     <Link href='/news' className={"nav_links underline_elt "}>News</Link>
                 </div>
                 <div className="nav_auth">
                     <button className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}>Register</button>
-                    <button className={"nav_links bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded "}>Login</button>
+                    <Link
+                        href={"/login"} 
+                        className={"nav_links bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded "}
+                    >
+                        Login
+                    </Link>
                 </div>
             </div>
         </nav>

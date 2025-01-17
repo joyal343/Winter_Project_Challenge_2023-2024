@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 improvements.txt
 styling.txt
+learnt.txt
 # dependencies
 /node_modules
 /.pnp

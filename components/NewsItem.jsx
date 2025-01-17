@@ -40,10 +40,11 @@ const NewsItem = (props) => {
             </div>
             {props.del ? 
             <div className={styles.delBtn}>
-                <Image
+                <img
                     src={"\\assets\\icons\\Cross.svg"}
                     width={30}
                     height={30}
+                    alt='Delete Announcement'
                     className='filter_light_grey'
                     onClick={()=>{props.handleDel(props.id)}}
                 />

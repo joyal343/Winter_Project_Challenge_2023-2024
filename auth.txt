@@ -1,1 +1,1 @@
-We use basic token authentication here
+We use jwt tokens for authentication
