@@ -57,6 +57,7 @@
     padding: 10px;
     border-radius: 5px;
     background-color: var(--post-btn);
+    color: white;
     width: 100px;
     margin-bottom: 70px;
 }

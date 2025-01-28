@@ -18,16 +18,13 @@ const page = () => {
     options={["Academic", "Clubs", "Sports", "Research", "Employment", "Tenders"
     ]}
     
-    />
+  />
 
-  {/* </div> */}
-  {/* <div className="w-24"> */}
   <DropdownMenu_Tailwind
     title="Department"
     options={["CSE", "ECE", "EEE", "MCE", "CVE"]}
   />
 
-  {/* </div> */}
   </div>
 }
     

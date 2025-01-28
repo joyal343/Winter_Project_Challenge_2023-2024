@@ -1,14 +1,19 @@
 "use client"
 
 import React, { useState } from 'react';
+import styles from "./DropDown_Tailwind.module.css"
 
 const DropdownMenu_Tailwind = ({ title, options, handler }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(false);
     const [newTitle, setNewTitle] = useState("");
+    const [animationState, setAnimationState] = useState("");
 
     const toggleMenu = () => setIsOpen(!isOpen)
-    const openMenu = () => setIsOpen(true)
+    const openMenu = () => {
+        setIsOpen(true)
+
+    }
     const closeMenu = () => setIsOpen(false)
     const handleOptionClick = (option) => {
         setSelectedOption(true);
@@ -17,7 +22,9 @@ const DropdownMenu_Tailwind = ({ title, options, handler }) => {
         handler(option);
     };
     return (
-        <div className="relative inline-block text-left min-w-32">
+        <div className="relative inline-block text-left min-w-32" 
+            // onMouseLeave={closeMenu}
+        >
             <div>
                 <button type="button" 
                     className={"inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 "} 
@@ -25,7 +32,7 @@ const DropdownMenu_Tailwind = ({ title, options, handler }) => {
                     aria-expanded="true" 
                     aria-haspopup="true"
                     onClick={toggleMenu}
-                    onMouseOver={openMenu}
+                    // onMouseOver={openMenu}
                 >
                     {selectedOption ? newTitle : title}
                     <svg className="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -34,12 +41,12 @@ const DropdownMenu_Tailwind = ({ title, options, handler }) => {
                 </button>
             </div>
             <div
-                className={"absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none" + (isOpen ? "" : " hidden")}
+                className={"absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none" + (isOpen ? `  ${styles.dropdown_open}` : ` ${styles.dropdown_close}`)}
                 role="menu" 
                 aria-orientation="vertical" 
                 aria-labelledby="menu-button" 
                 tabIndex="-1"
-                onMouseLeave={closeMenu}
+                // onMouseLeave={closeMenu}
             >
                 <div className="py-1" role="none">
                     {options.map((option, index) => (

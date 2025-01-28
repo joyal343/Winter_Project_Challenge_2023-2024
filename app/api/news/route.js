@@ -5,17 +5,20 @@ import {dirname} from 'path';
 import {fileURLToPath} from 'url'
 import {writeFile} from 'fs/promises'
 import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const uploadURL =__dirname.substring(0,__dirname.length - 13)+"\\public\\assets\\uploaded_images";
+const uploadURL =__dirname.substring(0,__dirname.length - 13)+"\\pdfStore";
 
 export async function POST(req){
-    // GET FORM DATA
     const data = await req.formData();
     const file = data.get('file');
     console.log(file);
+    
     if(!file.size){
         console.log("SIDE PATH")
+
+        await connectToDB();
         const newPost = new Post({
             title:data.get("title"),
             date: new Date(),
@@ -27,17 +30,14 @@ export async function POST(req){
         await newPost.save();
         return NextResponse.json({success:true})
     }
-    // GET BUFFER
+
+    // Save File to File System
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    // GET ID FOR FILE NAME
-    const idFile = fs.readFileSync(uploadURL+"\\id.txt",'utf8');
-    var id= Number(idFile) + 1;
-    fs.writeFileSync(uploadURL+"\\id.txt",id.toString());
-    // CREATE FILE
-    await writeFile(uploadURL+"\\"+id+file.name,buffer);
+    const fileId = uuidv4()
+    await writeFile(uploadURL+"\\" + fileId +".pdf",buffer);
 
-    // CONNECT TO DB and Write Post
+    // Connect to DB and Write Post
     await connectToDB();
     const newPost = new Post({
     title:data.get("title"),
@@ -45,9 +45,10 @@ export async function POST(req){
     desc:data.get("desc"),
     annType:data.get("type"),
     annDept:data.get("dept"),
-    picture:id+file.name,
+    picture:fileId+".pdf",
     })
-    // SAVE TO DB and Send Response
+
+    // Commit To DB and Send Response
     await newPost.save();
     return NextResponse.json({success:true});
 

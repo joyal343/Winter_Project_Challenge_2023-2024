@@ -70,6 +70,7 @@ const page = () => {
                 <SideBar 
                     links={["Create Announcement", "Delete Announcement"]}
                     linkURL={["\\admin\\addpost", "\\admin\\deletepost"]}
+                    linkImg={["/assets/icons/addpost_icon.svg", "/assets/icons/deletepost_icon.svg"]}
                 />
             </div>
             <div className={styles.delpost}>

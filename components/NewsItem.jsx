@@ -5,11 +5,11 @@ import NewsItemImage from './NewsItemImage.jsx';
 import Image from 'next/image';
 
 const NewsItem = (props) => {
-    console.log(props.date);
+    console.log(props);
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
-        <div className={styles.ListItemContainer}>
+        <div className={styles.ListItemContainer+" shadow-lg"}>
             <div className={styles.image_container}>
                 <NewsItemImage
                     hasImg={props.hasImg}

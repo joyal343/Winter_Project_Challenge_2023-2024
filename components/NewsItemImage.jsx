@@ -10,7 +10,7 @@ const NewsItemImage = ({ hasImg, ImgURL, annType }) => {
     return (
         hasImg ?
             (<div className={styles.image}>
-                <Image
+                <img
                     width={75}
                     height={75}
                     src={ImgURL}
@@ -20,7 +20,7 @@ const NewsItemImage = ({ hasImg, ImgURL, annType }) => {
         
             :
             (<div className={styles.image}>
-                <Image
+                <img
                     width={75}
                     height={75}
                     src={handleImage(annType)}

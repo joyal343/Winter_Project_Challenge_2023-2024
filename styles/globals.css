@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 :root{
-    /* Version 1 */
-    /* --nav-bg:#525CEB; */
-    /* --nav-text:white; */
-    /*  Version 2 */
-    /* --nav-bg:#040303; 
-    --nav-text:#FBFFFE; */
-    /* Version 3 */
     --nav-bg:#FFFFFF; 
     --nav-text:#040303;
     --nav-logo-text: #0284c7;
@@ -17,16 +10,18 @@
     --text-news-i:#3D3B40;
     /* --body-bg:#FBFFFE; */
     --body-bg:white;
-    --sidebar-bg:#3D3B40;
+    /* --sidebar-bg:#3D3B40; */
     --search-border:#ced4da;
     --text-area-border:#ced4da;
     --text-box-border:#ced4da;
     --drop-down-border:#ced4da;
-    --post-btn:#525CEB;
-    --sidebar-text:white;
+    --post-btn:#0284c7;
     --image-border:#ced4da;
     --news-boundry:#ced4da;
     --search-border:#ced4da;
+
+    --sidebar-bg:#FFFFFF;
+    --sidebar-text:#040303;
 }
 body{
     background-color: var(--body-bg);
@@ -195,7 +190,8 @@ textarea{
 .underline_elt{
     font-size: 20px;
     padding-bottom: 2px;
-    background-image: linear-gradient(#000,#000);
+    /* background-image: linear-gradient(#000,#000); */
+    background-image: linear-gradient(#0284c7,#0284c7);
     background-repeat: no-repeat;
     background-size: 0px 2px;
     background-position: 0% 100%;
@@ -208,6 +204,7 @@ textarea{
 
 .underline_elt_wrapper{
     padding-left: 20px;
+    /* margin-left: 40px; */
 }
 .register{
     background-color: var(--orange);
