@@ -1,18 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root{
-    --nav-bg:#525CEB;
-    --nav-text:white;
+    --nav-bg:#FFFFFF; 
+    --nav-text:#040303;
+    --nav-logo-text: #0284c7;
+
     --text-news-i:#3D3B40;
-    --body-bg:#FFFFFF;
-    --sidebar-bg:#3D3B40;
+    /* --body-bg:#FBFFFE; */
+    --body-bg:white;
+    /* --sidebar-bg:#3D3B40; */
     --search-border:#ced4da;
     --text-area-border:#ced4da;
     --text-box-border:#ced4da;
     --drop-down-border:#ced4da;
-    --post-btn:#525CEB;
-    --sidebar-text:white;
+    --post-btn:#0284c7;
     --image-border:#ced4da;
     --news-boundry:#ced4da;
     --search-border:#ced4da;
+
+    --sidebar-bg:#FFFFFF;
+    --sidebar-text:#040303;
 }
 body{
     background-color: var(--body-bg);
@@ -30,9 +39,17 @@ body{
 .filter_white{
     filter: invert(100%) sepia(1%) saturate(1542%) hue-rotate(171deg) brightness(118%) contrast(100%);
 }
+
+.filter_blue{
+    filter: invert(33%) sepia(90%) saturate(1052%) hue-rotate(172deg) brightness(99%) contrast(98%);
+}
 *{
+    box-sizing: border-box;
     padding: 0px;
     margin: 0px;
+    /* outline: 1px solid green; */
+    /* background: rgb(0 100 0 / 0.1) !important; */
+
 }
 
 a {
@@ -43,7 +60,7 @@ a {
 button {
 	background: none;
 	color: inherit;
-	border: none;
+	/* border: none;   Messes with Tailwind Css Styling*/
 	padding: 0;
 	font: inherit;
 	cursor: pointer;
@@ -52,7 +69,7 @@ button {
 
 input{
     outline: none; /* Gets rid of outline on select */
-    border: none;
+    /* border: none;  To not mess with tailwind*/
     font: inherit;
 }
 
@@ -79,16 +96,22 @@ textarea{
 }
 /* News page left div */
 .NewsPageLeft{
-    width: 60%;
-    padding: 0px 40px 0px 0px;
-    margin-top: 40px;
+    width: 30%;
+    padding-top: 40px;
+    margin: 0 auto;
+    /* outline: 10px solid green; */
+    /* padding: 0px 40px 0px 0px; */
+    /* margin-top: 40px; */
 }
 
 /* News page right div */
 .NewsPageRight{
-    margin-top: 40px;
-    padding: 0px 0px 0px 0px;
-    width: 40%;
+    width: 70%;
+    padding-top: 40px;
+    margin: 0 auto;
+    /* outline: 10px solid red; */
+    /* padding: 0px 0px 0px 0px; */
+    /* margin-top: 40px; */
 }
 
 
@@ -121,7 +144,7 @@ textarea{
 /* NewsList */
 .NewsList{
     width: 80%;
-    margin-left: auto;
+    /* margin-left: auto; */
 }
 /*NewsItem*/
 
@@ -147,12 +170,13 @@ textarea{
     grid-template-columns: 30px  auto ;
     gap: 5px;
     margin-right: 20px;
+    padding-left: 10px;
 }
 
 .logo_text{
     font-size: 28px;
     margin-bottom: 3px;  
-    color: var(--nav-text);
+    color: var(--nav-logo-text);
 }
 
 .logo_color{
@@ -163,6 +187,25 @@ textarea{
     font-size: 18px;
 }
 
+.underline_elt{
+    font-size: 20px;
+    padding-bottom: 2px;
+    /* background-image: linear-gradient(#000,#000); */
+    background-image: linear-gradient(#0284c7,#0284c7);
+    background-repeat: no-repeat;
+    background-size: 0px 2px;
+    background-position: 0% 100%;
+    transition: background-size 0.5s;
+}
+.underline_elt:hover{
+    background-size: 100% 2px;
+    transition: background-size 0.5s;
+}
+
+.underline_elt_wrapper{
+    padding-left: 20px;
+    /* margin-left: 40px; */
+}
 .register{
     background-color: var(--orange);
     border: 1px solid var(--orange);
@@ -171,12 +214,12 @@ textarea{
     padding: 7px;
 }
 
-.login{
+/* .login{
     border: 1px solid white;
     border-radius: 5px;
     padding: 7px;
     margin-right: 10px;
-}
+} */
 
 .nav_auth{
     display: flex;

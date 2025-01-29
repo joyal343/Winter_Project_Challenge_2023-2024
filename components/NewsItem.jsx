@@ -5,11 +5,11 @@ import NewsItemImage from './NewsItemImage.jsx';
 import Image from 'next/image';
 
 const NewsItem = (props) => {
-    console.log(props.date);
+    console.log(props);
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
-        <div className={styles.ListItemContainer}>
+        <div className={styles.ListItemContainer+" shadow-lg"}>
             <div className={styles.image_container}>
                 <NewsItemImage
                     hasImg={props.hasImg}
@@ -20,6 +20,9 @@ const NewsItem = (props) => {
             <div className={styles.ListItem}>
                 <div className={styles.LIHeading}>
                     {props.title}
+                </div>
+                <div className={styles.LIDesc}>
+                    {props.desc && (props.desc.length > 100 ? props.desc.substring(0, 100) + "..." : props.desc)}
                 </div>
                 <div className={styles.LIDate}>
                     {
@@ -33,16 +36,15 @@ const NewsItem = (props) => {
                         props.date.substring(0, 4)
                     }
                 </div>
-                <div className={styles.LIDesc}>
-                    {props.desc && (props.desc.length > 100 ? props.desc.substring(0, 100) + "..." : props.desc)}
-                </div>
+                
             </div>
             {props.del ? 
             <div className={styles.delBtn}>
-                <Image
+                <img
                     src={"\\assets\\icons\\Cross.svg"}
                     width={30}
                     height={30}
+                    alt='Delete Announcement'
                     className='filter_light_grey'
                     onClick={()=>{props.handleDel(props.id)}}
                 />

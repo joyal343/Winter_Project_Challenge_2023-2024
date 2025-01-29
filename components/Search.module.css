@@ -1,7 +1,7 @@
 .filters{
-    padding: 15px;
+    /* padding: 15px; */
     width: 70%;
-    margin-right: auto;
+    margin: 0px auto;
 }
 
 .searchBar{
@@ -9,6 +9,7 @@
     border-radius: 5px;
     display: flex;
     margin-bottom: 20px;
+    max-width: 300px;
     
 }
 
