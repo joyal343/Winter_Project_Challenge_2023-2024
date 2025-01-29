@@ -12,16 +12,21 @@ const uploadURL =__dirname.substring(0,__dirname.length - 13)+"\\pdfStore";
 
 export async function POST(req){
     const data = await req.formData();
+    console.log(data.get("title"));
+    console.log(data.get("desc"));
+    console.log(data.get("type"));
+    console.log(data.get("dept"));
     const file = data.get('file');
     console.log(file);
     
-    if(!file.size){
+    if(!file || !file.size){
         console.log("SIDE PATH")
 
         await connectToDB();
         const newPost = new Post({
             title:data.get("title"),
-            date: new Date(),
+            // date: new Date(),
+            date: data.get("date"),
             desc:data.get("desc"),
             annType:data.get("type"),
             annDept:data.get("dept"),

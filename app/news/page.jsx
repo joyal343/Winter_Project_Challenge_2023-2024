@@ -41,6 +41,7 @@ const page = () => {
     }, []);
 
     async function handleSearch(text, pDate, type, dept) {
+
         const response = await fetch('/api/news/search', {
             method: "POST",
             body: JSON.stringify({
@@ -51,7 +52,7 @@ const page = () => {
             })
         });
         const data = await response.json();
-        console.log(data);
+        console.log("data:",data);
         setCurrPosts(data);
     }
 

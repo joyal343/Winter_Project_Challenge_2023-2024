@@ -1,18 +1,15 @@
 import { connectToDB } from "@utils/database";
 import Post from '@models/post3';
-// prioirDate = new Date(new Date().setDate(today.getDate()-30));
-// prioirDate = new Date(new Date().setDate(today.getDate()-90));
-// prioirDate = new Date(new Date().setDate(today.getDate()-183));
-// prioirDate = new Date(new Date().setDate(today.getDate()-366));
-// prioirDate.getDate();
-// prioirDate.getMonth()+1;
-// prioirDate.getFullYear();
 
 export const POST = async (req) =>{
     const {text,pDate,type,dept} = await req.json();
+    console.log(text)
+    console.log(pDate)
+    console.log(type)
+    console.log(dept)
     var pR=0;
     
-    let today =new Date(); 
+    let today = new Date(); 
     let priorDate;
     
     pDate.forEach((elt,ind) => {
@@ -21,10 +18,12 @@ export const POST = async (req) =>{
     });
 
     var sDept=["CSE","ECE","EEE","MCE","CVE"];
-    sDept=sDept.filter((elt,index)=>{return dept[index]; });
+    sDept=sDept.filter((elt,index)=> dept[index])
+    if (sDept.length === 0) { sDept=["CSE","ECE","EEE","MCE","CVE"];}
     
     var sType=["Academic","Clubs","Sports","Research","Employment","Tenders"];
-    sType=sType.filter((elt,index)=>{return type[index];});
+    sType=sType.filter((elt,index)=> type[index] )
+    if (sType.length === 0) { sType=["Academic","Clubs","Sports","Research","Employment","Tenders"];}
 
     const tokens = text
         .toLowerCase()
@@ -36,45 +35,47 @@ export const POST = async (req) =>{
     try{
         await connectToDB();
         let posts 
-        if (pR===0) {
-            posts = await Post.find({});
-        } else if (pR===1){
-            
-        }
         switch (pR) {
             case 0:
-                posts =await Post.find({});
+                posts =await Post.find({
+                    annType:{$in:sType},
+                    annDept:{$in:sDept}
+                });
                 break;
             case 1:
                 priorDate = new Date(new Date().setDate(today.getDate()-30));
-                posts =await Post.find({date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`}});
+                posts =await Post.find({
+                    date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`},
+                    annType:{$in:sType},
+                    annDept:{$in:sDept} 
+                });
                 break;
             case 2:
                 priorDate = new Date(new Date().setDate(today.getDate()-90));
-                posts =await Post.find({date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`}});
+                posts =await Post.find({
+                    date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`},
+                    annType:{$in:sType},
+                    annDept:{$in:sDept}
+                }).exec();
                 break;
             case 3:
                 priorDate = new Date(new Date().setDate(today.getDate()-183));
-                posts =await Post.find({date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`}});
+                posts =await Post.find({
+                    date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`},
+                    annType:{$in:sType},
+                    annDept:{$in:sDept}
+                }).exec();
                 break;
             case 4:
                 priorDate = new Date(new Date().setDate(today.getDate()-366));
-                posts =await Post.find({date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`}});
+                posts =await Post.find({
+                    date:{$gte:`${priorDate.getFullYear()}-${priorDate.getMonth()+1}-${priorDate.getDate()}`},
+                    annType:{$in:sType},
+                    annDept:{$in:sDept}
+                }).exec();
                 break;
             default:
                 break;
-        }
-
-        if(sDept.length){
-            posts=posts.filter((post)=>{
-                return sDept.includes(post.annDept);
-            });
-        }
-
-        if(sType.length){
-            posts=posts.filter((post)=>{
-                return sType.includes(post.annType);
-            });
         }
 
         if(tokens.length){
@@ -85,7 +86,7 @@ export const POST = async (req) =>{
                 postString=postString.toLowerCase();
                 return postString.match(searchTermRegex);
             });
-            // console.log(currPosts);
+            console.log(currPosts);
             return new Response(JSON.stringify(currPosts),{status:201})
         }
 

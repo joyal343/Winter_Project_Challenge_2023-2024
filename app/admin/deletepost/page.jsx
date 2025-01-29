@@ -65,22 +65,22 @@ const page = () => {
         setCurrPosts(data);
     }
     return (
-        <div className={styles.main}>
-            <div className={styles.sidebar}>
-                <SideBar 
-                    links={["Create Announcement", "Delete Announcement"]}
-                    linkURL={["\\admin\\addpost", "\\admin\\deletepost"]}
-                    linkImg={["/assets/icons/addpost_icon.svg", "/assets/icons/deletepost_icon.svg"]}
-                />
-            </div>
-            <div className={styles.delpost}>
-                < NewsItemsList
-                    posts={currPosts}
-                    handleDel={handleDel} 
-                />
-                <SearchBar handleSearch={handleSearch} isdel={true} />
-            </div>
+    <div className={styles.main}>
+        <div className={styles.sidebar}>
+            <SideBar 
+                links={["Create Announcement", "Delete Announcement"]}
+                linkURL={["\\admin\\addpost", "\\admin\\deletepost"]}
+                linkImg={["/assets/icons/addpost_icon.svg", "/assets/icons/deletepost_icon.svg"]}
+            />
         </div>
+        <div className={styles.delpost}>
+            < NewsItemsList
+                posts={currPosts}
+                handleDel={handleDel} 
+            />
+            <SearchBar handleSearch={handleSearch} isdel={true} />
+        </div>
+    </div>
     )
 }
 
