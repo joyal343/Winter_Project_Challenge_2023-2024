@@ -20,8 +20,8 @@ const SearchBar = (props) => {
                     <button onClick={() => { props.handleSearch(text, pDate, type, dept) }}>
                         <Image 
                         src="\assets\icons\search.svg"
-                            alt="" 
-                            className="filter_grey"
+                        alt="search button" 
+                        className="filter_grey"
                         width={16}
                         height={16}
                         />

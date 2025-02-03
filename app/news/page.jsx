@@ -35,7 +35,7 @@ const page = () => {
             const response = await fetch('/api/news/allnews');
             const data = await response.json();
             setCurrPosts(data);
-            console.log(data);
+            
         }
         fetchPosts();
     }, []);
@@ -52,16 +52,16 @@ const page = () => {
             })
         });
         const data = await response.json();
-        console.log("data:",data);
+        
         setCurrPosts(data);
     }
 
     return (
-        <div className='NewsPage'>
-            <div className='NewsPageLeft'>
+        <div className='flex flex-col sm:flex-row'>
+            <div className='sm:w-[30%] sm:pt-10 mx-auto'>
                 <Search handleSearch={handleSearch} />
             </div>
-            <div className="NewsPageRight">
+            <div className="sm:w-[70%] sm:pt-10 mx-auto">
                 <NewsItemsList posts={currPosts} />
             </div>
         </div>

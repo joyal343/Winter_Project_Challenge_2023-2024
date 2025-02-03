@@ -5,7 +5,7 @@ import NewsItemImage from './NewsItemImage.jsx';
 import Image from 'next/image';
 
 const NewsItem = (props) => {
-    console.log(props);
+    
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
