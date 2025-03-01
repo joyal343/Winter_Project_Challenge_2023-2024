@@ -7,11 +7,11 @@
 .searchBar{
     border: 1px solid var(--search-border);
     border-radius: 5px;
-    display: flex;
     margin-bottom: 20px;
-    max-width: 300px;
+    /* max-width: 300px; */
     
 }
+
 
 .searchBar > input {
     flex-grow: 1;
@@ -24,15 +24,14 @@
 
 
 .searchButton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
+    display: inline;
+    margin: auto;
+    min-width: 30px;
 
 }
 
 .searchButton > button {
-    width: 20px;
+    min-width: 20px;
     height: 20px;
 }
 
