@@ -43,7 +43,7 @@ export async function handleLogin(prevState, formData) {
   await createSession(user);
 
   // Redirect to the admin dashboard
-  redirect("/admin/addpost");
+  redirect("/admin/posts");
 }
 
 export async function logout() {

@@ -29,7 +29,7 @@ export const MyProvider = ({ children }) => {
         // Remove event listener on cleanup
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-    console.log("width px?:", windowSize.width);
+    // console.log("width px?:", windowSize.width);
     return (
         <MyContext.Provider value={{ windowSize, setWindowSize }}>
             {children}

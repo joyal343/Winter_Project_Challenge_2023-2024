@@ -3,6 +3,7 @@ import styles from "./DeletePost.module.css";
 import SideBar from "@components/SideBar";
 import NewsItem from "@components/NewsItem";
 import SearchBar from "@components/Search";
+import Example from "@components/Modal";    
 import { useState, useEffect } from 'react';
 const NewsItemsList = ({ posts, handleDel }) => {
 
@@ -73,12 +74,15 @@ const page = () => {
                 linkImg={["/assets/icons/addpost_icon.svg", "/assets/icons/deletepost_icon.svg"]}
             />
         </div>
+        <div>
+        <Example/>
         <div className={styles.delpost}>
             < NewsItemsList
                 posts={currPosts}
                 handleDel={handleDel} 
             />
             <SearchBar handleSearch={handleSearch} isdel={true} />
+        </div>
         </div>
     </div>
     )

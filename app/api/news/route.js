@@ -25,8 +25,7 @@ export async function POST(req){
         await connectToDB();
         const newPost = new Post({
             title:data.get("title"),
-            // date: new Date(),
-            date: data.get("date"),
+            date: new Date(),
             desc:data.get("desc"),
             annType:data.get("type"),
             annDept:data.get("dept"),

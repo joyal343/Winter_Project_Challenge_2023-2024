@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { decrypt } from "./app/lib/sessions";
 
-const protectedRoutes = ["/admin/addpost", "/admin/deletepost"];
+const protectedRoutes = ["/admin/posts"];
 
 export default async function middleware(req) {
     // console.log("middleware")
