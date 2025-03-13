@@ -4,7 +4,6 @@
 import { useState } from "react";
 import FilterItem from "./FilterItem";
 import Image from 'next/image';
-import styles from "./Search.module.css";
 const SearchBar = (props) => {
     const [text, setText] = useState('');
     const [pDate, setPDate] = useState(new Array(5).fill(false));
@@ -13,36 +12,42 @@ const SearchBar = (props) => {
     const handleChange = (e) => setText(e.target.value)
     return (
 
-        <div className={styles.filters+" flex_column"} >
+        <div className={"flex-col flex"} >
             {/* Search Bar */}
-            <div className={styles.searchBar}>
-                <div className={styles.searchButton}>
-                    <button onClick={() => { props.handleSearch(text, pDate, type, dept) }}>
-                        <Image 
-                        src="\assets\icons\search.svg"
-                        alt="search button" 
-                        className="filter_grey"
-                        width={16}
-                        height={16}
+            <div className={"border border-[var(--search-border)] rounded-[5px] flex p-2 mb-4"}>
+                <div className="inline min-w-[30px] margin-auto">
+                    <button
+                        onClick={() => { props.handleSearch(text, pDate, type, dept) }}
+                        className="w-[20px] h-[20px]"
+                    >
+                        <Image
+                            src="\assets\icons\search.svg"
+                            alt="search button"
+                            className="filter_grey"
+                            width={16}
+                            height={16}
                         />
                     </button>
                 </div>
-                <input 
-                type="text"
-                placeholder="Search" 
-                value={text} 
-                onChange={handleChange} 
-                className={props.isdel && styles.search_inp} />
+                <div className="grow">
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        value={text}
+                        onChange={handleChange}
+                        className="w-[100%]"
+                    />
+                </div>
             </div>
             {/* Options */}
             <div className="filter_head">Publishing Date</div>
             {/* Filter Component Needs To be Created */}
             <ul className="filter_item">
-                <FilterItem 
-                    state={pDate} 
-                    setState={setPDate} 
-                    title="All Date" 
-                    ind={0} 
+                <FilterItem
+                    state={pDate}
+                    setState={setPDate}
+                    title="All Date"
+                    ind={0}
                 />
                 <FilterItem state={pDate} setState={setPDate} title="Last 30 Days" ind={1} />
                 <FilterItem state={pDate} setState={setPDate} title="Last 60 Days" ind={2} />

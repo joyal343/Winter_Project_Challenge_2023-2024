@@ -65,7 +65,7 @@ const Nav = () => {
                 <div className={
                     'mob_sidebar_pos flex flex-col gap-5 absolute top-[60px] duration-500 w-full '
                     + (isMobileOpen ? "left-0" :"-left-full") }>
-                    <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
+                    <div className="underline_elt_wrapper mt-4" onClick={toggleMobSidebar}>
                         <Link href='/' className={"nav_links underline_elt "}>Home</Link>
                     </div>
                     <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>

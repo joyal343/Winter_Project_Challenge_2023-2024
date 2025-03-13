@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const SideBar = ({ links, linkURL, linkImg }) => {
     return (
-        <div className={"border border-t-0 border-grey-400 "+styles.sidebar}>
+        <div className={"border border-t-0 border-grey-400 " + styles.sidebar}>
             <div className={styles.profile}>
                 <div className={styles.img_cont + " flex_center"}>
                     <Image
@@ -20,22 +20,24 @@ const SideBar = ({ links, linkURL, linkImg }) => {
             </div>
             <div>
                 {links.map((link, index) => (
-                <div 
-                className={"flex justify-evenly "+styles.sidebar_link}
-                key={index}>
-                    <Image
-                        src={linkImg[index]}
-                        alt="Profile Image"
-                        width={15}
-                        height={15}
-                        className={styles.profile_image}
-                    />
-                    <Link 
-                    // key={index} 
-                    href={linkURL[index]}
-                    >{link}</Link>
+                    <div
+                        className={"flex no-underline text-[var(--sidebar-text)] pl-3 pr-2 py-3 transition-colors duration-300 hover:bg-gray-300"}
+                        key={index}>
+                        <Image
+                            src={linkImg[index]}
+                            alt={link}
+                            width={25}
+                            height={25}
+                            className={"mr-3"}
+                        />
+                        <Link
+                            // key={index} 
+                            href={linkURL[index]}
+                        >
+                            {link}
+                        </Link>
 
-                </div>
+                    </div>
                 ))}
             </div>
         </div>

@@ -8,7 +8,7 @@ const NewsItem = (props) => {
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
-        <div className={styles.ListItemContainer+" shadow-lg w-[80%] sm:w-[70%]"}>
+        <div className={"flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav"}>
             <div className='flex justify-start'>
                 <NewsItemImage
                     hasImg={props.hasImg}
@@ -16,11 +16,11 @@ const NewsItem = (props) => {
                     annType={props.annType}
                 />
             </div>
-            <div className={styles.ListItem}>
-                <div className={styles.LIHeading + " text-[20px] sm:text[28px] mb-[10px] inline-block"}>
+            <div className='grow'>
+                <div className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block"}>
                     {props.title}
                 </div>
-                <div className="text-[18px] my-10 mx-0">
+                <div className="text-[18px] mb-2 ">
                     {props.desc && (props.desc.length > 100 ? props.desc.substring(0, 100) + "..." : props.desc)}
                 </div>
                 <div className="text-[14px]">

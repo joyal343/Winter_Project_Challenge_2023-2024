@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import NewsItem from '@components/NewsItem';
 import Search from '@components/Search';
 import MobileSearch from '@components/MobileSearch';
@@ -8,9 +8,9 @@ import { MyContext } from "@/context";
 
 const NewsItemsList = ({ posts, isMobile }) => {
     // Pagination also needs to be added
-    
+
     return (
-        <div className='flex flex-col items-center sm:block w-[100%]'>
+        <div className='flex flex-col items-center sm:block w-[100%] sm:w-[70%]'>
             <div className="text-[20px] sm:text-[20px] mb-5 text-gray-500">{"Results " + posts.length}</div>
             {posts.map((post) => {
                 return <NewsItem
@@ -21,7 +21,7 @@ const NewsItemsList = ({ posts, isMobile }) => {
                     key={post._id}
                     hasImg={post.picture === "" ? false : true}
                     imgURL={".assets/uploaded_images/" + post.picture}
-                    isMobile = {isMobile}
+                    isMobile={isMobile}
                 />
             })}
         </div>
@@ -30,19 +30,21 @@ const NewsItemsList = ({ posts, isMobile }) => {
 
 
 const page = () => {
-    const {windowSize, setWindowSize} = useContext(MyContext);
+    const { windowSize, setWindowSize } = useContext(MyContext);
+    // Posts Displayed on Screen
     const [currPosts, setCurrPosts] = useState([]);
 
+    // Getting Posts from the Backend
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch('/api/news/allnews');
             const data = await response.json();
             setCurrPosts(data);
-            
         }
         fetchPosts();
     }, []);
 
+    // Function to Handle Search Requests
     async function handleSearch(text, pDate, type, dept) {
 
         const response = await fetch('/api/news/search', {
@@ -55,21 +57,23 @@ const page = () => {
             })
         });
         const data = await response.json();
-        
         setCurrPosts(data);
     }
 
     return (
-        <div className='flex flex-col sm:flex-row'>
-            <div className='flex justify-center  sm:w-[30%] sm:pt-10 sm:mx-auto'>
+        <div className='flex flex-col p-5 sm:p-0 sm:flex-row '>
+            <div className='flex justify-center  w-[100%] sm:w-[30%] sm:pt-10 sm:mx-auto'>
                 {
-                    windowSize.width >= 640 ? 
-                    <Search handleSearch={handleSearch} /> : <MobileSearch handleSearch={handleSearch}/>
+                    windowSize.width >= 640 ?
+                        <Search handleSearch={handleSearch} /> : <MobileSearch handleSearch={handleSearch} />
                 }
-                
+
             </div>
             <div className="w-[100%] sm:w-[70%] sm:pt-10 mx-auto">
-                <NewsItemsList posts={currPosts} isMobile = {windowSize.width >= 640 ? false : true}/>
+                <NewsItemsList
+                    posts={currPosts} 
+                    isMobile={windowSize.width >= 640 ? false : true} 
+                />
             </div>
         </div>
     )
