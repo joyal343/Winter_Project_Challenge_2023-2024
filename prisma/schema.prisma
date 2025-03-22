@@ -16,4 +16,5 @@ model Record {
   department    String
   fileLocation  String?
   imageLocation String?
+  bannerLocation String?
 }
