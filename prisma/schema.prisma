@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+ datasource db {
+  provider = "postgresql"  // Change to "mysql" or "sqlite" if needed
+  url      = env("DATABASE_URL")
+}
+
+model Record {
+  id            String   @id @default(uuid())
+  title         String
+  description   String
+  date          DateTime @default(now())
+  type          String
+  department    String
+  fileLocation  String?
+  imageLocation String?
+}

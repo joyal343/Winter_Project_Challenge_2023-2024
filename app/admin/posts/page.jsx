@@ -29,7 +29,8 @@ const NewsItemsList = ({ posts, isMobile, handleDel }) => {
                     id={post._id}
                     key={post._id}
                     handleDel={handleDel}
-                    hasImg={post.picture === "" ? false : true}
+                    // hasImg={post.picture === "" ? false : true}
+                    hasImg={false}
                     imgURL={".assets/uploaded_images/" + post.picture}
                     isMobile={isMobile}
                 />
