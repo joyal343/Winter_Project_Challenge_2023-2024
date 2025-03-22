@@ -2,6 +2,7 @@
 improvements.txt
 styling.txt
 learnt.txt
+.env
 # dependencies
 /node_modules
 /.pnp
