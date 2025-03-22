@@ -4,8 +4,8 @@ A NextJS project for the challenge : Announcement Website for NIT Goa.
 # Technologies
 ```
 1.) Nextjs
-2.) MongoDB
-3.) mongoose - npm package to connect with mongo db
+2.) Postgres as Database
+3.) Prisma as ORM
 ``` 
 
 
