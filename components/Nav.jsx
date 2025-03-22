@@ -39,7 +39,12 @@ const Nav = () => {
                     <Link href='/news' className={"nav_links underline_elt "}>About</Link>
                 </div>
                 <div className="nav_auth">
-                    <button className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}>Register</button>
+                    <Link
+                        href={"/register"} 
+                        className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}
+                    >
+                        Register
+                    </Link>
                     <Link
                         href={"/login"}
                         className={"nav_links bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded "}
@@ -81,7 +86,13 @@ const Nav = () => {
                         >
                             Login
                         </Link>
-                        <button className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}>Register</button>
+
+                        <Link
+                            href={"/register"} 
+                            className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}
+                        >
+                            Register
+                        </Link>
                     </div>
                     <div className='w-full h-5'></div>
                 </div>

@@ -18,3 +18,10 @@ model Record {
   imageLocation String?
   bannerLocation String?
 }
+
+model User {
+  id       String  @id @default(uuid())
+  email    String  @unique
+  password String  
+  createdAt DateTime @default(now())
+}

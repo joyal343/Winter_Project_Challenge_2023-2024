@@ -3,7 +3,7 @@ import { createSession, deleteSession} from "../lib/sessions";
 import { z } from "zod";
 import { NextResponse } from "next/server";
 import { redirect } from "next/navigation";
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'   
 
 // Define the schema for the login form Validation
 const loginSchema = z.object({
@@ -15,40 +15,39 @@ const loginSchema = z.object({
 });
 
 
-export async function handleLogin(prevState, formData) {
+export async function handleRegister(prevState, formData) {
   // Form Data Validation 
   const result = loginSchema.safeParse(Object.fromEntries(formData));
-  // var user
-
   if (!result.success) 
     return { errors: result.error.flatten().fieldErrors,};
   
-  
-  console.log("server action login", formData.get("email"), formData.get("password"))
-  
   // Authenticate User
+  console.log("server action register", formData.get("email"), formData.get("password"))
+  
   try {
-    const prisma = new PrismaClient() 
-    const user = await prisma.user.findUnique({
-      where:{
-        email:formData.get("email")
+    const prisma = new PrismaClient()
+    await prisma.user.create({
+      data:{
+        email:formData.get("email"),
+        password:formData.get("password")
       }
     })
     prisma.$disconnect()
-    console.log("user",user)
-    if(!user || user.password !== formData.get("password")){
-      return { errors: { email: ["Invalid username or password"] }, }
-    }
-    const user_token = { email: formData.get("email"), name: "John" };
-    await createSession(user_token);
-    console.log("redirecting to admin")
-    
   } catch (error) {
-    console.log("error",error)
-    return { errors: { email: [JSON.stringify(error)] }, }
+    return {
+      errors: {
+        email: ["Email may already exist"]
+      },
+    }
   }
+  
+  const user = { email: formData.get("email"), name: "John" };
+  
+  // Create the session
+  await createSession(user);
+
+  // Redirect to the admin dashboard
   redirect("/admin/posts");
-  // I dont know why put cant redirect in try and catch block
 }
 
 export async function logout() {

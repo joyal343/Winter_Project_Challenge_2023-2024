@@ -23,11 +23,11 @@ const NewsItemsList = ({ posts, isMobile, handleDel }) => {
                 return <NewsItem
                     title={post.title}
                     date={post.date}
-                    desc={post.desc}
-                    annType={post.annType}
+                    desc={post.description}
+                    annType={post.type}
                     del={true}
-                    id={post._id}
-                    key={post._id}
+                    id={post.id}
+                    key={post.id}
                     handleDel={handleDel}
                     // hasImg={post.picture === "" ? false : true}
                     hasImg={false}

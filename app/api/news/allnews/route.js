@@ -1,10 +1,10 @@
-import { connectToDB } from "@utils/database";
-import Post from '@models/post3';
+import { PrismaClient } from '@prisma/client'
 
 export const GET = async (req)=>{
     try {
-        await connectToDB();
-        const posts = await Post.find({});
+        const prisma = new PrismaClient();
+        const posts = await prisma.record.findMany();
+        prisma.$disconnect();
         return new Response(JSON.stringify(posts),{status:200});
 
     } catch (err) {
@@ -12,11 +12,15 @@ export const GET = async (req)=>{
     }
 }
 
-export const DELETE =async (req)=>{
+export const DELETE = async (req)=>{
     try{
-        await connectToDB();
+        const prisma = new PrismaClient();
         const {id} = await req.json();
-        const user = await Post.deleteOne({_id:id});
+        const user = await prisma.record.delete({
+            where:{
+                id:id
+            }
+        });
         return new Response(JSON.stringify(user),{status:200})
     }
     catch(err){

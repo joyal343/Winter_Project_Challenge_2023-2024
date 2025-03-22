@@ -16,11 +16,12 @@ const NewsItemsList = ({ posts, isMobile }) => {
                 return <NewsItem
                     title={post.title}
                     date={post.date}
-                    desc={post.desc}
-                    annType={post.annType}
-                    key={post._id}
-                    hasImg={post.picture === "" ? false : true}
-                    imgURL={".assets/uploaded_images/" + post.picture}
+                    desc={post.description}
+                    annType={post.type}
+                    key={post.id}
+                    // hasImg={post.picture === "" ? false : true}
+                    hasImg={false}
+                    imgURL={".assets/uploaded_images/"}
                     isMobile={isMobile}
                 />
             })}
