@@ -2,13 +2,13 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { decrypt } from "./app/lib/sessions";
 
-const protectedRoutes = ["/admin/posts"];
+const protectedRoutes = ["/admin/posts","/api/news"];
 
 export default async function middleware(req) {
     const path = req.nextUrl.pathname;
     // Uncomment this for protection
-    // const isProtectedRoute = protectedRoutes.includes(path);
-    const isProtectedRoute = false;
+    const isProtectedRoute = protectedRoutes.includes(path);
+    // const isProtectedRoute = false;
     
 
     const c = await cookies();
