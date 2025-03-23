@@ -11,7 +11,7 @@ A NextJS project for the challenge : Announcement Website for NIT Goa.
 
 # Setup
 ```
-1.) Run MongoDB on default port
+1.) Run Postgres on default port 5432
 2.) run on cmd in project folder :- npm i
 3.) run on cmd in project folder :- npm run dev
 ```

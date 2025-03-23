@@ -7,7 +7,7 @@ import Example from "@components/Modal";
 import { useState, useEffect, useContext } from 'react';
 import { MyContext } from "@/context";
 
-const NewsItemsList = ({ posts, isMobile, handleDel }) => {
+const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
     // Pagination also needs to be added
 
     return (
@@ -100,6 +100,7 @@ const page = () => {
                             posts={currPosts}
                             isMobile={windowSize.width >= 640 ? false : true}
                             handleDel={handleDel}
+                            handleSearch = {handleSearch}
                         />
                     </div>
                     <div className='flex justify-center  sm:w-[30%] sm:pt-10 sm:mx-auto'>

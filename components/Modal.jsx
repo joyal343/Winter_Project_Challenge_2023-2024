@@ -5,7 +5,7 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import DropdownMenu_Tailwind from '@components/DropDown_Tailwind';
 
 
-export default function Example() {
+export default function Example(props) {
   // Used to open and close the modal
   const [open, setOpen] = useState(false)
 
@@ -58,6 +58,7 @@ export default function Example() {
     setFile(null)
 
     if (!res.ok) throw new Error(await res.text());
+    props.callback()
     return;
   }
 
