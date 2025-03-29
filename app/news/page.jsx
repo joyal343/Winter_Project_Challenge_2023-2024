@@ -19,6 +19,7 @@ const NewsItemsList = ({ posts, isMobile }) => {
                     desc={post.description}
                     annType={post.type}
                     key={post.id}
+                    id={post.id}
                     // hasImg={post.picture === "" ? false : true}
                     hasImg={false}
                     imgURL={".assets/uploaded_images/"}
@@ -38,7 +39,7 @@ const page = () => {
     // Getting Posts from the Backend
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch('/api/news/allnews');
+            const response = await fetch('/api/news/search');
             const data = await response.json();
             setCurrPosts(data);
         }

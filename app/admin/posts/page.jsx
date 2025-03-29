@@ -47,7 +47,7 @@ const page = () => {
     // Getting Posts from the Backend
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch('/api/news/allnews');
+            const response = await fetch('/api/news/search');
             const data = await response.json();
             setCurrPosts(data);
         }
@@ -57,7 +57,7 @@ const page = () => {
     // Function to Delete a Post
     async function handleDel(id) {
         console.log(id);
-        const response = await fetch('/api/news/allnews', {
+        const response = await fetch('/api/news', {
             method: "DELETE",
             body: JSON.stringify({
                 id: id

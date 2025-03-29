@@ -7,9 +7,9 @@ learnt.txt
 #IGNORE EXISTING MIGRATIONS ?
 /prisma/migrations/* 
 
-/fileStore/bannerStore/*
-/fileStore/imageStore/*
-/fileStore/pdfStore/*
+/public/bannerStore/*
+/public/imageStore/*
+/public/pdfStore/*
 
 # dependencies
 /node_modules

@@ -111,3 +111,15 @@ export const POST = async (req) =>{
         console.log(error)
     }
 }
+
+export const GET = async (req)=>{
+    try {
+        const prisma = new PrismaClient();
+        const posts = await prisma.record.findMany();
+        prisma.$disconnect();
+        return new Response(JSON.stringify(posts),{status:200});
+
+    } catch (err) {
+        console.log(err);
+    }
+}

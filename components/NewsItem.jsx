@@ -2,13 +2,22 @@
 
 import styles from './NewsItem.module.css';
 import NewsItemImage from './NewsItemImage.jsx';
+const { useRouter } = require('next/navigation');
 
 const NewsItem = (props) => {
     
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const router = useRouter();
 
+    async function gotoAnnouncement() {
+        router.push(`/news/${props.id}`);
+    }
+    
     return (
-        <div className={"flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav"}>
+        
+        <div 
+            className={"hover:scale-[1.02] transition-transform duration-300 flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav"}
+        >
             <div className='flex justify-start'>
                 <NewsItemImage
                     hasImg={props.hasImg}
@@ -17,7 +26,11 @@ const NewsItem = (props) => {
                 />
             </div>
             <div className='grow'>
-                <div className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block"}>
+                <div 
+                    className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block hover:cursor-pointer"}
+                    
+                    onClick={gotoAnnouncement}
+                >
                     {props.title}
                 </div>
                 <div className="text-[18px] mb-2 ">

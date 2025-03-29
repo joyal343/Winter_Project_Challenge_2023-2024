@@ -3,6 +3,7 @@ import path from "path";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
+  
   try {
     const filePath = path.join(process.cwd(), "public", "sample-file.ext"); // Change the file path accordingly
     console.log(filePath);

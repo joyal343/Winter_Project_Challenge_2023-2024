@@ -15,16 +15,18 @@ export default function Example(props) {
   const [type, setType] = useState("");
   const [dept, setDept] = useState("");
   const [file, setFile] = useState("");
+  const [img, setImg] = useState("");
+  const [banner, setBanner] = useState("");
 
   // Functions to update the data to be Transmitted
   const handleType = (value) => setType(value)
   const handleDept = (value) => setDept(value)
   const handleTitle = (e) => setTitle(e.target.value)
   const handleDesc = (e) => setDesc(e.target.value)
-  const handleFile = (e) => {
-    console.log("Triggered")
-    setFile(e.target.files?.[0])
-  }
+  const handleFile = (e) => setFile(e.target.files?.[0])
+  const handleImg = (e) => setImg(e.target.files?.[0])
+  const handleBanner = (e) => setBanner(e.target.files?.[0])
+  
 
   // Function to Send Data to Backend
   const onSubmit = async (e) => {
@@ -38,13 +40,16 @@ export default function Example(props) {
 
     // Creating FormData Object to be sent to Backend
     const data = new FormData(e.target);
-    for (let pair of data.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-
     data.set('type', type);
     data.set('dept', dept);
-    if (file) { data.set('file', file); }
+    if (file) data.set('file', file); 
+    if (img) data.set('img', img); 
+    if (banner) data.set('banner', banner);
+    
+    // Logging all items in the FormData object
+    for (const [key, value] of data.entries()) {
+      console.log(`${key}:`, value);
+    }
 
     // Submitting Data to Backend
     const res = await fetch('/api/news', {
@@ -52,10 +57,12 @@ export default function Example(props) {
       body: data
     })
 
-    // Resetting the Type and Department
+    // Resetting values to default
     handleType("")
     handleDept("")
     setFile(null)
+    setImg(null)
+    setBanner(null)
 
     if (!res.ok) throw new Error(await res.text());
     props.callback()
@@ -115,11 +122,28 @@ export default function Example(props) {
                       value={desc}
                       onChange={handleDesc}
                     />
-                    <label htmlFor="file" className='mb-2'> *optional </label>
-                    <input name="file"
+                    <label htmlFor="file" className='mb-2'> Pdf </label>
+                    <input 
+                      name="file"
                       className='border border-gray-500 mb-4'
                       type="file"
                       onChange={handleFile}
+                    />
+                    <label htmlFor="file" className='mb-2'> Image </label>
+                    <input 
+                      name="img"
+                      className='border border-gray-500 mb-4'
+                      type="file"
+                      accept = "image/*"
+                      onChange={handleImg}
+                      />
+                    <label htmlFor="file" className='mb-2'> Banner </label>
+                    <input 
+                      name="banner"
+                      className='border border-gray-500 mb-4'
+                      type="file"
+                      accept = "image/*"
+                      onChange={handleBanner}
                     />
 
                     {/* Submit and Cancel */}
