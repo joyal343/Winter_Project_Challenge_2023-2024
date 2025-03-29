@@ -3,6 +3,12 @@ improvements.txt
 styling.txt
 learnt.txt
 .env
+
+#IGNORE EXISTING MIGRATIONS ?
+migrations/* 
+
+fileStore/*
+
 # dependencies
 /node_modules
 /.pnp

@@ -67,9 +67,7 @@ const Nav = () => {
         {/* Mobile Sidebar */}
         {
             (windowSize.width < 640) && (
-                <div className={
-                    'mob_sidebar_pos flex flex-col gap-5 absolute top-[60px] duration-500 w-full '
-                    + (isMobileOpen ? "left-0" :"-left-full") }>
+                <div className={ 'mob_sidebar_pos flex flex-col gap-5 absolute top-[60px] duration-500 w-full ' + (isMobileOpen ? "left-0" :"-left-full") } >
                     <div className="underline_elt_wrapper mt-4" onClick={toggleMobSidebar}>
                         <Link href='/' className={"nav_links underline_elt "}>Home</Link>
                     </div>
@@ -79,10 +77,11 @@ const Nav = () => {
                     <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
                         <Link href='/news' className={"nav_links underline_elt "}>About</Link>
                     </div>
-                    <div className="flex flex-col justify-end px-4 grow gap-4">
+                    <div className="flex flex-col justify-end px-4 grow gap-4" >
                         <Link
                             href={"/login"}
                             className={"nav_links bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded "}
+                            onClick={toggleMobSidebar}
                         >
                             Login
                         </Link>
@@ -90,6 +89,7 @@ const Nav = () => {
                         <Link
                             href={"/register"} 
                             className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}
+                            onClick={toggleMobSidebar}
                         >
                             Register
                         </Link>

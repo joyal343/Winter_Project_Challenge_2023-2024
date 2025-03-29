@@ -13,6 +13,7 @@
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.5.0",
     "autoprefixer": "^10.4.21",
+    "file-saver": "^2.0.5",
     "jose": "^5.9.6",
     "mongoose": "^8.9.5",
     "next": "^15.1.4",

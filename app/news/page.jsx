@@ -10,7 +10,7 @@ const NewsItemsList = ({ posts, isMobile }) => {
     // Pagination also needs to be added
 
     return (
-        <div className='flex flex-col items-center sm:block w-[100%] sm:w-[70%]'>
+        <div className='flex flex-col items-center sm:block w-[100%] sm:w-[85%] '>
             <div className="text-[20px] sm:text-[20px] mb-5 text-gray-500">{"Results " + posts.length}</div>
             {posts.map((post) => {
                 return <NewsItem
@@ -62,7 +62,7 @@ const page = () => {
     }
 
     return (
-        <div className='flex flex-col p-5 sm:p-0 sm:flex-row '>
+        <div className='flex flex-col p-5 sm:p-0 sm:flex-row overflow-y-auto'>
             <div className='flex justify-center  w-[100%] sm:w-[30%] sm:pt-10 sm:mx-auto'>
                 {
                     windowSize.width >= 640 ?

@@ -216,3 +216,28 @@ textarea{
     flex-grow: 1;
     align-items: center;
 }
+
+/* Scroll Bar */
+/* .scrollbar_container{
+    background-color: red;
+} */
+
+/* .scroll_container{
+    scrollbar-width: 10px;
+    scrollbar-color: red orange;
+}
+
+.scroll_container:hover{
+    scrollbar-color: black transparent;
+} */
+/* For browsers that support `scrollbar-*` properties */
+
+  
+  /* Firefox
+.scroll-container {
+    scrollbar-width: none; 
+}
+  
+.group:hover.scroll-container {
+    scrollbar-width: thin; 
+} */

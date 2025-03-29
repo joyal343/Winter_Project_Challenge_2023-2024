@@ -15,7 +15,7 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
             <div className="flex items-center">
                 <div className="text-[20px] sm:text-[20px] text-gray-500">{"Results " + posts.length}</div>
                 <div className="hidden sm:block ml-[auto] my-[auto]">
-                    <Example />
+                    <Example callback ={()=>{handleSearch("", [true, false, false, false, false], "", "")}} />
                 </div>
             </div>
 
