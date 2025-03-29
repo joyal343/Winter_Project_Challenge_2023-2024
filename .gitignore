@@ -5,9 +5,11 @@ learnt.txt
 .env
 
 #IGNORE EXISTING MIGRATIONS ?
-migrations/* 
+/prisma/migrations/* 
 
-fileStore/*
+/fileStore/bannerStore/*
+/fileStore/imageStore/*
+/fileStore/pdfStore/*
 
 # dependencies
 /node_modules
