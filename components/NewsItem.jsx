@@ -16,20 +16,18 @@ const NewsItem = (props) => {
     return (
         
         <div 
-            className={"hover:scale-[1.02] transition-transform duration-300 flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav"}
+            className={"hover:scale-[1.02] transition-transform duration-300 flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav hover:cursor-pointer"}
         >
-            <div className='flex justify-start'>
+            <div className='flex justify-start' onClick={gotoAnnouncement}>
                 <NewsItemImage
                     hasImg={props.hasImg}
                     ImgURL={props.imgURL}
                     annType={props.annType}
                 />
             </div>
-            <div className='grow'>
+            <div className='grow' onClick={gotoAnnouncement}>
                 <div 
-                    className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block hover:cursor-pointer"}
-                    
-                    onClick={gotoAnnouncement}
+                    className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block"}
                 >
                     {props.title}
                 </div>
