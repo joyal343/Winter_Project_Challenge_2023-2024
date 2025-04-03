@@ -5,14 +5,16 @@ const DropdownMobile = () => {
 
   useEffect(() => {
     const handleDropdownClick = (event) => {
+      const rect = event.target.getBoundingClientRect();
+      console.log(rect.x, rect.y);
       const dropdownContent = event.target.nextElementSibling;
-      console.log(dropdownContent);
       dropdownContent.style.display = 
           dropdownContent.style.display === "block" ? "none" : "block";
+      dropdownContent.style.left = `${rect.x}px`;
+      dropdownContent.style.top = `${rect.y + 30}px`;
 
       // Close other dropdowns
       document.querySelectorAll(`.${styles.dropdownContent}`).forEach(content => {
-        console.log(content)  
         if (content !== dropdownContent) content.style.display = "none";
       });
 
@@ -29,12 +31,18 @@ const DropdownMobile = () => {
     document.querySelectorAll(`.${styles.dropbtn}`).forEach((button) => {
       button.addEventListener("click", handleDropdownClick);
     });
+    document.querySelectorAll(`.${styles.scrollContainer}`).forEach((container) => {
+      container.addEventListener("scroll", closeDropdowns);
+    })
 
     return () => {
       document.removeEventListener("click", closeDropdowns);
       document.querySelectorAll(`.${styles.dropbtn}`).forEach((button) => {
         button.removeEventListener("click", handleDropdownClick);
       });
+      document.querySelectorAll(`.${styles.scrollContainer}`).forEach((container) => {
+        container.removeEventListener("scroll", closeDropdowns);
+      })
     };
   }, []);
 

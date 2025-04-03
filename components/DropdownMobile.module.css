@@ -28,7 +28,7 @@
   
   /* Dropdown content */
   .dropdownContent {
-    position: absolute;
+    position: fixed;
     margin-top: 20px;
     z-index: 2;
     background: white;
