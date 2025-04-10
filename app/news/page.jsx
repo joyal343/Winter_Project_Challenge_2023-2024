@@ -3,7 +3,7 @@
 import { useState, useEffect, useContext } from 'react';
 import NewsItem from '@components/NewsItem';
 import Search from '@components/Search';
-import MobileSearch from '@components/MobileSearch';
+import DropdownMobile from '@components/DropdownMobile';
 import { MyContext } from "@/context";
 
 const NewsItemsList = ({ posts, isMobile }) => {
@@ -20,7 +20,6 @@ const NewsItemsList = ({ posts, isMobile }) => {
                     annType={post.type}
                     key={post.id}
                     id={post.id}
-                    // hasImg={post.picture === "" ? false : true}
                     hasImg={false}
                     imgURL={".assets/uploaded_images/"}
                     isMobile={isMobile}
@@ -32,10 +31,27 @@ const NewsItemsList = ({ posts, isMobile }) => {
 
 
 const page = () => {
-    const { windowSize, setWindowSize } = useContext(MyContext);
-    // Posts Displayed on Screen
-    const [currPosts, setCurrPosts] = useState([]);
-
+    const { windowSize, setWindowSize } = useContext(MyContext)
+    const [currPosts, setCurrPosts] = useState([]); // Posts Displayed on Screen
+    
+    const filterOptions = { // Options displayed in mobile horizontal dropdown
+        Date: [
+          "All Date",
+          "Last 30 Days",
+          "Last 60 Days",
+          "Last 6 Months",
+          "Last 12 Months",
+        ],
+        Category: [
+          "Academic",
+          "Clubs",
+          "Sports",
+          "Research",
+          "Employment",
+          "Tenders",
+        ],
+        Department: ["CSE", "ECE", "EEE", "MCE", "CVE"],
+      };
     // Getting Posts from the Backend
     useEffect(() => {
         const fetchPosts = async () => {
@@ -48,7 +64,7 @@ const page = () => {
 
     // Function to Handle Search Requests
     async function handleSearch(text, pDate, type, dept) {
-
+        console.log("Search Initiated")
         const response = await fetch('/api/news/search', {
             method: "POST",
             body: JSON.stringify({
@@ -67,7 +83,12 @@ const page = () => {
             <div className='flex justify-center  w-[100%] sm:w-[30%] sm:pt-10 sm:mx-auto'>
                 {
                     windowSize.width >= 640 ?
-                        <Search handleSearch={handleSearch} /> : <MobileSearch handleSearch={handleSearch} />
+                        <Search handleSearch={handleSearch} /> 
+                            : 
+                        <DropdownMobile
+                            filterOptions={filterOptions}
+                            handleSearch={handleSearch} 
+                        />
                 }
 
             </div>

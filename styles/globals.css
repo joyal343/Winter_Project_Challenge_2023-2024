@@ -33,6 +33,7 @@ body{
     height: 100%;
     background-color: var(--body-bg);
 }
+
 .hide{
     display: none;
 }

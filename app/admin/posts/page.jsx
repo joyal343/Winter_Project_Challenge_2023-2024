@@ -56,7 +56,6 @@ const page = () => {
 
     // Function to Delete a Post
     async function handleDel(id) {
-        console.log(id);
         const response = await fetch('/api/news', {
             method: "DELETE",
             body: JSON.stringify({
@@ -64,7 +63,6 @@ const page = () => {
             })
         });
         const res = await response.json();
-        console.log(res);
         handleSearch("", [true, false, false, false, false], "", "")
     }
 
@@ -80,7 +78,6 @@ const page = () => {
             })
         });
         const data = await response.json();
-        // console.log(data);
         setCurrPosts(data);
     }
     return (

@@ -12,7 +12,7 @@ const SearchBar = (props) => {
     const handleChange = (e) => setText(e.target.value)
     return (
 
-        <div className={"flex-col flex"} >
+        <div className={"flex-col flex bg-white rounded-md shadow-lg p-4 h-[125vh] opacity-90"} >
             {/* Search Bar */}
             <div className={"border border-[var(--search-border)] rounded-[5px] flex p-2 mb-4"}>
                 <div className="inline min-w-[30px] margin-auto">

@@ -16,7 +16,7 @@ const NewsItem = (props) => {
     return (
         
         <div 
-            className={"hover:scale-[1.02] transition-transform duration-300 flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav hover:cursor-pointer"}
+            className={"hover:scale-[1.02] transition-transform duration-300 flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav hover:cursor-pointer bg-white opacity-90"}
         >
             <div className='flex justify-start' onClick={gotoAnnouncement}>
                 <NewsItemImage
