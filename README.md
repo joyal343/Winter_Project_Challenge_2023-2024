@@ -21,7 +21,7 @@ This will setup a developement server on port 3000
 # Endpoints
 1.) */news*
 This endpoint will show a webpage that shows all announcements. This page will also has a search bar and filters.
-![News Image](https://github.com/joyal343/Winter_Project_Challenge_2023-2024/public/assets/uploaded_images/news.jpg)
+![News Image](./public/assets/uploaded_images/news.jpg)
 
 2.) */admin/posts*
 
