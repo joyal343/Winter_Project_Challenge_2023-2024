@@ -8,6 +8,7 @@ import { PrismaClient } from '@prisma/client'
 // Define the schema for the login form Validation
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }).trim(),
+  name: z.string().min(4, { message: "Name is required" }).trim(),
   password: z
     .string()
     .min(4, { message: "Password must be at least 4 characters" })
@@ -29,6 +30,7 @@ export async function handleRegister(prevState, formData) {
     await prisma.user.create({
       data:{
         email:formData.get("email"),
+        name:formData.get("name"),
         password:formData.get("password")
       }
     })
@@ -41,10 +43,10 @@ export async function handleRegister(prevState, formData) {
     }
   }
   
-  const user = { email: formData.get("email"), name: "John" };
+  const user = { email: formData.get("email"), name: formData.get("name") };
   
   // Create the session
-  await createSession(user);
+  await createSession(user, formData.get("name"));
 
   // Redirect to the admin dashboard
   redirect("/admin/posts");

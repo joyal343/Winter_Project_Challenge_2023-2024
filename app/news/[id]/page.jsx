@@ -45,21 +45,10 @@ export default function Page({ params }) {
     }, []);
 
     return (
-        <div className="grid grid-cols-3 grid-rows-[20vh_auto] h-screen w-full gap-2">
-            {/* Image spanning 3 columns */}
-            <div className="col-span-3 row-span-1">
-                {banner &&
-                    <img
-                        src={banner}
-                        alt="Header Image"
-                        className="w-full h-full object-cover rounded-lg"
-                    />}
-            </div>
+        <div className="flex flex-col sm:grid sm:grid-cols-3 sm:grid-rows-[auto] p-5 sm:p-0 h-full w-full sm:gap-2">
 
-            {/* Div spanning 2 columns in the second row */}
-
-            <div className="flex flex-col col-span-2  pl-16">
-                <h1 className="font-bold border-b-[3px] border-[#8B80F9] text-4xl mb-4 py-5">{title}</h1>
+            <div className="flex flex-col sm:col-span-2 sm:pl-16 sm:mt-5 mb-6 sm:mb-4 ">
+                <h1 className="font-bold border-b-[3px] border-[#8B80F9] text-2xl sm:text-4xl mb-4 py-5">{title}</h1>
                 <p className="mb-4">{
                     date && 
                     ((date.substring(8, 10) === "01" ?
@@ -71,24 +60,20 @@ export default function Page({ params }) {
                     + " " +
                     date.substring(0, 4))
                 }</p>
-                <p className="mb-4">{desc}</p>
-                <p>Download Attachment</p>
-
+                <p className="text-xl">{desc + " " + desc.length + " " + desc.trim().length}</p>
             </div>
-
-
-            {/* Div occupying remaining 1 column in second row */}
-            <div className=" flex items-start justify-center text-xl rounded-lg h-[50%] pt-5">
+            <div className="sm:flex items-start justify-center sm:col-span-1 text-xl rounded-lg mb-6 sm:h-[50%] sm:pt-5 sm:mt-20">
                 {img &&
-                    <div className="w-[70%] h-[70%] object-cover ">
+                    <div className="w-[100%] sm:w-[70%] sm:h-[70%] object-cover ">
                         <img
                             src={img}
                             alt="Header Image"
                             className="w-full h-full object-cover rounded-lg"
-                        />
+                            />
                     </div>
                 }
             </div>
+            <p className="sm:col-span-1 sm:pl-16 text-center sm:text-left">Download Attachment</p>
         </div>
     );
 }

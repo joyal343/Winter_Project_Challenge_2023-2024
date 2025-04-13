@@ -137,14 +137,7 @@ export default function Example(props) {
                       accept = "image/*"
                       onChange={handleImg}
                       />
-                    <label htmlFor="file" className='mb-2'> Banner </label>
-                    <input 
-                      name="banner"
-                      className='border border-gray-500 mb-4'
-                      type="file"
-                      accept = "image/*"
-                      onChange={handleBanner}
-                    />
+  
 
                     {/* Submit and Cancel */}
                     <div className="bg-gray-50 sm:flex sm:gap-5">

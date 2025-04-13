@@ -89,7 +89,7 @@ const DropdownMobile = ({ filterOptions, handleSearch }) => {
 
   return (
     <div className="w-[100%]">
-      <div className={"border border-[var(--search-border)] rounded-[5px] flex p-2 w-[100%]"}>
+      <div className={"bg-white border border-[var(--search-border)] rounded-[5px] flex p-2 w-[100%] opacity-90"}>
         <div className="inline min-w-[30px] margin-auto">
           <button
             onClick={() => { handleSearch(text, searchObj.pDate, searchObj.type, searchObj.dept) }}

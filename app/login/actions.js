@@ -18,11 +18,9 @@ const loginSchema = z.object({
 export async function handleLogin(prevState, formData) {
   // Form Data Validation 
   const result = loginSchema.safeParse(Object.fromEntries(formData));
-  // var user
 
   if (!result.success) 
     return { errors: result.error.flatten().fieldErrors,};
-  
   
   console.log("server action login", formData.get("email"), formData.get("password"))
   
@@ -39,8 +37,8 @@ export async function handleLogin(prevState, formData) {
     if(!user || user.password !== formData.get("password")){
       return { errors: { email: ["Invalid username or password"] }, }
     }
-    const user_token = { email: formData.get("email"), name: "John" };
-    await createSession(user_token);
+    const user_token = { email: formData.get("email"), name: user.name };
+    await createSession(user_token,user.name);
     console.log("redirecting to admin")
     
   } catch (error) {
@@ -63,7 +61,7 @@ export async function updateSession(request) {
 
   // Refresh the session so it doesn't expire
   const parsed = await decrypt(session);
-  parsed.expires = new Date(Date.now() + 10 * 1000);
+  parsed.expires = new Date(Date.now() + 100 * 60 * 1000);
   const res = NextResponse.next();
   res.cookies.set({
     name: "session",
@@ -71,6 +69,12 @@ export async function updateSession(request) {
     httpOnly: true,
     expires: parsed.expires,
   });
+  res.cookies.set({
+    name: "session_active",
+    value: "true",
+    expires: parsed.expires,
+  });
+  // Addd code to update the name
   return res;
 }
 

@@ -1,9 +1,9 @@
 # Winter_Project_Challenge_2023-2024
-A NextJS project for the challenge : Announcement Website for NIT Goa.
+A NextJS project for the challenge : Announcement Website
 
 # Technologies
 ```
-1.) Nextjs
+1.) Nextjs 
 2.) Postgres as Database
 3.) Prisma as ORM
 ``` 

@@ -11,27 +11,43 @@ export const MyProvider = ({ children }) => {
         height: undefined,
     });
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     useEffect(() => {
         
-        // Is width permanetly attached to window object?   
         function handleResize() {
             setWindowSize({
                 width: window.innerWidth,
                 height: window.innerHeight,
             });
         }
-
-        // Add event listener
+        
         window.addEventListener("resize", handleResize);
-
         handleResize();
 
-        // Remove event listener on cleanup
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-    // console.log("width px?:", windowSize.width);
+
+    useEffect(() => {
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            // pop removes last elt, shift removes first elt
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+
+        const sessionCookie = getCookie('session_active');
+        if (sessionCookie) {
+            console.log('Session cookie exists:', sessionCookie);
+            setIsLoggedIn(true)
+        } else {
+            console.log('Session cookie does not exist');
+            setIsLoggedIn(false)
+        }
+    }, []);
+
     return (
-        <MyContext.Provider value={{ windowSize, setWindowSize }}>
+        <MyContext.Provider value={{ windowSize, setWindowSize, isLoggedIn, setIsLoggedIn }}>
             {children}
         </MyContext.Provider>
     );

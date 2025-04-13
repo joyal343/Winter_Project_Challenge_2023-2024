@@ -1,11 +1,21 @@
 "use client"
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useContext } from "react";
 import { handleLogin } from "@/app/login/actions";
+import { MyContext } from "@/context"; 
 
 export default function Page() {
   const [state, loginAction] = useActionState(handleLogin, undefined);
-
+  const { isLoggedIn, setIsLoggedIn } = useContext(MyContext);
+  
+  useEffect(()=>{
+    if (state && state.errors) {
+      console.log("Errors:", state.errors);
+    } else if (state && state.data) {
+      console.log("Login successful:", state.data);
+      setIsLoggedIn(true)
+    }
+  },[state])
 
   // not sure but will fetch on change in state 
   return (

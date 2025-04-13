@@ -3,6 +3,7 @@ improvements.txt
 styling.txt
 learnt.txt
 .env
+start_dev.bat
 
 #IGNORE EXISTING MIGRATIONS ?
 /prisma/migrations/* 

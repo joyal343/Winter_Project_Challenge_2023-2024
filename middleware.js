@@ -6,12 +6,11 @@ const protectedRoutes = ["/admin/posts","/api/news"];
 
 export default async function middleware(req) {
     const path = req.nextUrl.pathname;
-    // const isProtectedRoute = protectedRoutes.includes(path);
-    const isProtectedRoute = false
+    const isProtectedRoute = protectedRoutes.includes(path);
+    // const isProtectedRoute = false
     
     // PRINT OUT PATH
-    console.log(path)
-    // if (path == "\\") 
+    console.log(path) 
 
     const c = await cookies();
     const cookie = c.get("session") // Returns either the cookie value or undefined (intellisense)

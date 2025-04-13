@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
       const y = Math.random() * canvas.height * 0.9 + canvas.height * 0.05;
       const r = Math.random() * 100 + 60; // Bigger bubbles
 
-      console.log("Circle", i, "X:", x, "Y:", y, "R:", r);
+      // console.log("Circle", i, "X:", x, "Y:", y, "R:", r);
       ctx.beginPath();
       ctx.arc(x, y, r, 0, 2 * Math.PI);
       ctx.fillStyle = `rgba(56, 189, 248, ${Math.random() * 0.3 + 0.4})`; // Sky-blue with 0.4–0.7 opacity
