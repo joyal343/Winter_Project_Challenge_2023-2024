@@ -48,8 +48,7 @@ export async function handleRegister(prevState, formData) {
   // Create the session
   await createSession(user, formData.get("name"));
 
-  // Redirect to the admin dashboard
-  redirect("/admin/posts");
+  return { success: true };
 }
 
 export async function logout() {

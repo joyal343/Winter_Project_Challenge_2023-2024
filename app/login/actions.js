@@ -39,13 +39,13 @@ export async function handleLogin(prevState, formData) {
     }
     const user_token = { email: formData.get("email"), name: user.name };
     await createSession(user_token,user.name);
-    console.log("redirecting to admin")
+    return { success: true };
     
   } catch (error) {
     console.log("error",error)
     return { errors: { email: [JSON.stringify(error)] }, }
   }
-  redirect("/admin/posts");
+  
   // I dont know why put cant redirect in try and catch block
 }
 

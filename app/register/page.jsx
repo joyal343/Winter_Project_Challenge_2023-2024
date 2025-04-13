@@ -1,21 +1,22 @@
 "use client"
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect,useContext } from "react";
 import { handleRegister } from "./actions";
 import { MyContext } from "@/context";  
 
 export default function Page() {
-  const [state, loginAction] = useActionState(handleRegister, undefined);
   const { isLoggedIn, setIsLoggedIn } = useContext(MyContext); 
+  
+  const handleLoginRedirect= async (prevState, formData) => {
+    const result = await handleRegister(prevState, formData);
+    if (result.success) {
+      setIsLoggedIn(true);
+      window.location.href = "/admin/posts";
+    }
+    return result;
+  }
 
-  useEffect(()=>{
-      if (state && state.errors) 
-        console.log("Errors:", state.errors);
-      else if (state && state.data) {
-        console.log("Login successful:", state.data);
-        setIsLoggedIn(true)
-      }
-    },[state])
+  const [state, loginAction] = useActionState(handleLoginRedirect, undefined);
 
   // not sure but will fetch on change in state 
   return (

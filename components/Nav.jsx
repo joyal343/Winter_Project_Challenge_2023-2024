@@ -7,9 +7,21 @@ import { MyContext } from "@/context";
 const Nav = () => {
     const { windowSize, setWindowSize,isLoggedIn,setIsLoggedIn } = useContext(MyContext);
     const [isMobileOpen, setMobileOpen] = useState(false)
+    const [userName,setUserName] = useState("")
 
     const toggleMobSidebar = () => setMobileOpen(!isMobileOpen)
+    
+    useEffect(() => {
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
 
+        const userName = getCookie('user_name');
+        if (isLoggedIn) setUserName(userName)
+
+    }, [isLoggedIn]);
 
     return (
         <nav className='relative'>
@@ -40,7 +52,7 @@ const Nav = () => {
                         </div>
                         <div className="nav_auth">{
                             isLoggedIn ?
-                                <div>User Name</div>
+                                <div>{userName}</div>
                                 :
                                 <>
                                     <Link
