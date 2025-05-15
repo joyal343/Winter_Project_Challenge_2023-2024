@@ -92,7 +92,7 @@ const page = () => {
             <div className="flex w-[100%] sm:w-[80%] sm:pl-5">
                 <div className='flex grow flex-col-reverse sm:flex-row sm:mt-5'>
 
-                    <div className="w-[100%] sm:w-[90%] sm:pt-10 mx-auto">
+                    <div className="w-[100%] sm:w-[80%] sm:px-4 sm:pt-10 mx-auto">
                         <NewsItemsList
                             posts={currPosts}
                             isMobile={windowSize.width >= 640 ? false : true}
@@ -100,7 +100,7 @@ const page = () => {
                             handleSearch = {handleSearch}
                         />
                     </div>
-                    <div className='flex justify-center  sm:w-[30%] sm:pt-10 sm:mx-auto'>
+                    <div className='flex justify-center  sm:w-[20%] sm:pt-10 sm:mx-auto'>
                         {
                             windowSize.width >= 640 ?
                                 <Search handleSearch={handleSearch} /> :

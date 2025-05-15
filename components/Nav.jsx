@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { MyContext } from "@/context";
 
 const Nav = () => {
-    const { windowSize, setWindowSize,isLoggedIn,setIsLoggedIn } = useContext(MyContext);
+    const { windowSize, setWindowSize, isLoggedIn, setIsLoggedIn } = useContext(MyContext);
     const [isMobileOpen, setMobileOpen] = useState(false)
-    const [userName,setUserName] = useState("")
+    const [userName, setUserName] = useState("")
 
     const toggleMobSidebar = () => setMobileOpen(!isMobileOpen)
-    
+
     useEffect(() => {
         const getCookie = (name) => {
             const value = `; ${document.cookie}`;
@@ -52,7 +52,19 @@ const Nav = () => {
                         </div>
                         <div className="nav_auth">{
                             isLoggedIn ?
-                                <div>{userName}</div>
+                                <a 
+                                    className="flex gap-3 items-center mr-4"
+                                    href="/admin/posts"
+                                >
+                                    {userName}
+                                    <img
+                                        src={`\\assets\\icons\\Clubs.svg`}
+                                        alt=""
+                                        width={30}
+                                        height={30}
+                                        className = "border-2 rounded-full border-sky-500 "
+                                    />
+                                </a>
                                 :
                                 <>
                                     <Link
@@ -95,23 +107,35 @@ const Nav = () => {
                         <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
                             <Link href='/news' className={"nav_links underline_elt "}>About</Link>
                         </div>
-                        <div className="flex flex-col justify-end px-4 grow gap-4" >
-                            <Link
-                                href={"/login"}
-                                className={"nav_links bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded "}
-                                onClick={toggleMobSidebar}
-                            >
-                                Login
-                            </Link>
+                        {isLoggedIn ?
+                            <div className="flex items-center mr-4">
+                                <img
+                                    src={`\\assets\\icons\\Club.svg`}
+                                    alt=""
+                                    width={30}
+                                    height={30}
+                                />
+                                {userName}
+                            </div>
+                            :
+                            <div className="flex flex-col justify-end px-4 grow gap-4" >
+                                <Link
+                                    href={"/login"}
+                                    className={"nav_links bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded "}
+                                    onClick={toggleMobSidebar}
+                                >
+                                    Login
+                                </Link>
 
-                            <Link
-                                href={"/register"}
-                                className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}
-                                onClick={toggleMobSidebar}
-                            >
-                                Register
-                            </Link>
-                        </div>
+                                <Link
+                                    href={"/register"}
+                                    className={"nav_links bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded "}
+                                    onClick={toggleMobSidebar}
+                                >
+                                    Register
+                                </Link>
+                            </div>
+                        }
                         <div className='w-full h-5'></div>
                     </div>
                 )
