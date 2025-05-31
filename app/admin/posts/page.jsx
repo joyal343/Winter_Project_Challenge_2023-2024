@@ -2,7 +2,7 @@
 import SideBar from "@components/SideBar";
 import NewsItem from "@components/NewsItem";
 import Search from "@components/Search";
-import MobileSearch from '@components/MobileSearch';
+import DropdownMobile from '@components/DropdownMobile';
 import Example from "@components/Modal";
 import { useState, useEffect, useContext } from 'react';
 import { MyContext } from "@/context";
@@ -15,7 +15,10 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
             <div className="flex items-center">
                 <div className="text-[20px] sm:text-[20px] text-gray-500">{"Results " + posts.length}</div>
                 <div className="hidden sm:block ml-[auto] my-[auto]">
-                    <Example callback ={()=>{handleSearch("", [true, false, false, false, false], "", "")}} />
+                    <Example 
+                        callback={() => { handleSearch("", [true, false, false, false, false], "", "") }} 
+                        styles = "w-8 h-8 rounded-full"
+                    />
                 </div>
             </div>
 
@@ -39,6 +42,25 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
     )
 }
 const page = () => {
+    const filterOptions = { // Options displayed in mobile horizontal dropdown
+        Date: [
+            "All Date",
+            "Last 30 Days",
+            "Last 60 Days",
+            "Last 6 Months",
+            "Last 12 Months",
+        ],
+        Category: [
+            "Academic",
+            "Clubs",
+            "Sports",
+            "Research",
+            "Employment",
+            "Tenders",
+        ],
+        Department: ["CSE", "ECE", "EEE", "MCE", "CVE"],
+    };
+
     const { windowSize, setWindowSize } = useContext(MyContext);
 
     // Posts Displayed on Screen
@@ -81,12 +103,22 @@ const page = () => {
         setCurrPosts(data);
     }
     return (
-        <div className={"flex w-[100%] p-5 sm:p-0"}>
+        <div className={"flex w-[100%] p-8 sm:p-0"}>
+            {
+                windowSize.width >= 640 ? 
+                <></>    
+                    :
+                <div className="fixed bottom-4 left-4 z-50">
+                    <Example 
+                        styles = "w-16 h-16 rounded-full bg-white"
+                    />
+                </div>
+            }
             <div className={"hidden sm:flex sm:flex-col sm:w-[15%]"}>
                 <SideBar
                     links={["Dashboard", "Posts"]}
                     linkURL={["\\admin\\dashboard", "\\admin\\posts"]}
-                    linkImg={[ "/assets/icons/DashBoardIcon.svg","/assets/icons/Posts.svg"]}
+                    linkImg={["/assets/icons/DashBoardIcon.svg", "/assets/icons/Posts.svg"]}
                 />
             </div>
             <div className="flex w-[100%] sm:w-[80%] sm:pl-5">
@@ -97,21 +129,20 @@ const page = () => {
                             posts={currPosts}
                             isMobile={windowSize.width >= 640 ? false : true}
                             handleDel={handleDel}
-                            handleSearch = {handleSearch}
+                            handleSearch={handleSearch}
                         />
                     </div>
                     <div className='flex justify-center  sm:w-[20%] sm:pt-10 sm:mx-auto'>
                         {
                             windowSize.width >= 640 ?
-                                <Search handleSearch={handleSearch} /> :
-                                <div className="flex w-[100%] gap-5">
-                                    <div className="w-[90%]">
-                                        <MobileSearch handleSearch={handleSearch} />
-                                    </div>
-                                    <div className="ml-auto my-auto">
-                                        <Example />
-                                    </div>
-                                </div>
+                                <Search 
+                                    handleSearch={handleSearch} 
+                                />
+                                :
+                                <DropdownMobile
+                                    filterOptions={filterOptions}
+                                    handleSearch={handleSearch}
+                                />
                         }
 
                     </div>

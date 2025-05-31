@@ -6,8 +6,8 @@ const protectedRoutes = ["/admin/posts","/api/news"];
 
 export default async function middleware(req) {
     const path = req.nextUrl.pathname;
-    const isProtectedRoute = protectedRoutes.includes(path);
-    // const isProtectedRoute = false
+    // const isProtectedRoute = protectedRoutes.includes(path);
+    const isProtectedRoute = false // Used to All all routes for now
     
     // PRINT OUT PATH
     console.log(path) 

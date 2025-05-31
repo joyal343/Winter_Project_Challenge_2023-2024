@@ -115,7 +115,9 @@ const DropdownMobile = ({ filterOptions, handleSearch }) => {
         </div>
       </div>
       <div className={styles.container}>
-        <div className={styles.scrollContainer}>
+        <div 
+          className={styles.scrollContainer}
+        >
           {Object.keys(filterOptions).map((label, index) => (
             <div key={index} className={styles.dropdown}>
               <button
