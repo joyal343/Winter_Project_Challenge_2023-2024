@@ -14,11 +14,6 @@ const openSans = Open_Sans({
 
 
 export default function RootLayout({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoading = () => {
-    setIsLoading(false);
-  }
 
   useEffect(() => {
   const canvas = document.getElementById('bgCanvas');
@@ -98,18 +93,16 @@ export default function RootLayout({ children }) {
 
   // Init
   window.addEventListener('resize', resizeCanvas);
-  window.addEventListener("load",handleLoading);
+  
   resizeCanvas();
   return () => {
     window.removeEventListener('resize', resizeCanvas);
-    window.removeEventListener("load",handleLoading);
   }
   },[])
 
   return (
     <html lang="en" className={openSans.className}>
       <body>
-        <Loader isLoading = {isLoading}/>
         <MyProvider>
           <Nav />
         <canvas id="bgCanvas"  className="h-[100%] w-[100%] fixed top-0 left-0 z-[-20]">

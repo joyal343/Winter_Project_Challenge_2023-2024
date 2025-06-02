@@ -1,10 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./DropdownMobile.module.css";
 import Image from 'next/image'; 
 
 const DropdownMobile = ({ filterOptions, handleSearch }) => {
+  const scrollRef = useRef(null)
   const [text, setText] = useState('');
 
   const [searchObj, setSearchObj] = useState({
@@ -44,7 +45,13 @@ const DropdownMobile = ({ filterOptions, handleSearch }) => {
   }
 
   useEffect(() => {
-
+    // Move horizntal scroll to center
+    const el = scrollRef.current;
+    if (el) {
+      const center = (el.scrollWidth - el.clientWidth) / 2;
+      el.scrollLeft = center;
+    }
+    // Handle dropdown click and toggle visibility
     const handleDropdownClick = (event) => {
       const rect = event.target.getBoundingClientRect();
       const dropdownContent = event.target.nextElementSibling;
@@ -116,7 +123,9 @@ const DropdownMobile = ({ filterOptions, handleSearch }) => {
       </div>
       <div className={styles.container}>
         <div 
+          ref = {scrollRef}
           className={styles.scrollContainer}
+          style={{ scrollBehavior: 'smooth' }}
         >
           {Object.keys(filterOptions).map((label, index) => (
             <div key={index} className={styles.dropdown}>

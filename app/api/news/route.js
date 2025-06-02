@@ -35,14 +35,6 @@ export async function POST(req){
         await writeFile(imgLocation, imgBuffer);
         record.data.imageLocation = `/imageStore/${path.basename(imgLocation)}`;
     }
-
-    if (banner && banner.size) {
-        const bannerBytes = await banner.arrayBuffer();
-        const bannerBuffer = Buffer.from(bannerBytes);
-        const bannerLocation = path.join(process.cwd(), "public", "bannerStore", uuidv4() + path.extname(banner.name));
-        await writeFile(bannerLocation, bannerBuffer);
-        record.data.bannerLocation = `/bannerStore/${path.basename(bannerLocation)}`;
-    }
  
     await prisma.record.create(record)
     prisma.$disconnect()

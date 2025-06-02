@@ -1,32 +1,91 @@
 "use client";
-
+import { useState } from 'react';
 import styles from './NewsItem.module.css';
 import NewsItemImage from './NewsItemImage.jsx';
+import UpdateModal from './UpdateModal.jsx';
+
 const { useRouter } = require('next/navigation');
 
 const NewsItem = (props) => {
-    
+    const [open,setOpen] = useState(false)
+
+    // Data to Be Transmitted
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [type, setType] = useState("");
+    const [dept, setDept] = useState("");
+    const [file, setFile] = useState("");
+    const [img, setImg] = useState("");
+
+
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const router = useRouter();
 
     async function gotoAnnouncement() {
         router.push(`/news/${props.id}`);
     }
-    
+
+    async function handleUpdate(id) {
+        try {
+            const response = await fetch('/api/news/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch announcement data');
+            }
+            const data = await response.json();
+            console.log(data);
+            setTitle(data.title) 
+            setDesc(data.description);
+            setType(data.type);
+            setDept(data.department);
+
+            // You can now use 'data' to populate your modal or state
+            setOpen(true);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
-        
-        <div 
-            className={"hover:scale-[1.02] transition-transform duration-300 flex gap-10 mb-5 rounded-md py-6 px-4 shadow-lg w-[100%] text-nav hover:cursor-pointer bg-white opacity-90"}
+        <>
+        <UpdateModal 
+            open = {open}
+            setOpen = {setOpen}
+            id = {props.id}
+            title = {title}
+            desc = {desc}
+            type = {type}
+            dept = {dept}
+            file = {file} 
+            img ={img}
+            // Functions to update the data to be Transmitted
+            setType = { setType}
+            setDept = {setDept}
+            setTitle = {setTitle}
+            setDesc = {setDesc}
+            setFile = {setFile}
+            setImg = {setImg}
+            callback = {()=>{console.log("Update Done")}}
+        />
+        <div
+            className={"hover:scale-[1.02] transition-transform duration-300 hover:cursor-pointer w-[100%] flex gap-2 sm:gap-10 mb-5 py-6 px-4 rounded-md shadow-lg  text-nav  bg-white opacity-90"}
         >
-            <div className='flex justify-start' onClick={gotoAnnouncement}>
-                <NewsItemImage
-                    hasImg={props.hasImg}
-                    ImgURL={props.imgURL}
-                    annType={props.annType}
-                />
-            </div>
-            <div className='grow' onClick={gotoAnnouncement}>
-                <div 
+            {!props.isMobile &&
+                <div className='flex justify-start sm:flex-[1]' onClick={gotoAnnouncement}>
+                    <NewsItemImage
+                        hasImg={props.hasImg}
+                        ImgURL={props.imgURL}
+                        annType={props.annType}
+                    />
+                </div>
+            }
+            <div className='flex-[9] sm:flex-[8]' onClick={gotoAnnouncement}>
+                <div
                     className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block"}
                 >
                     {props.title}
@@ -46,22 +105,36 @@ const NewsItem = (props) => {
                         props.date.substring(0, 4)
                     }
                 </div>
-                
+
             </div>
-            {props.del ? 
-            <div className={styles.delBtn}>
-                <img
-                    src={"\\assets\\icons\\Cross.svg"}
-                    width={30}
-                    height={30}
-                    alt='Delete Announcement'
-                    className='filter_light_grey'
-                    onClick={()=>{props.handleDel(props.id)}}
-                />
+            {props.del ?<div className ="flex-[1] sm:flex-[1] flex flex-col justify-center items-center gap-5">
+
+                <div className={styles.delBtn}>
+                    <img
+                        src={"\\assets\\icons\\delete_July.svg"}
+                        width={25}
+                        height={25}
+                        alt='Delete Announcement'
+                        className='filter_light_grey'
+                        onClick={() => { props.handleDel(props.id) }}
+                    />
+                </div>
+                {/* Update Button */}
+                <div>
+                    <img
+                        src={"\\assets\\icons\\edit_July.svg"}
+                        width={25}
+                        height={25}
+                        alt='Update Announcement'
+                        className='filter_light_grey'
+                        onClick={() => { handleUpdate(props.id) }}
+                    />
+
+                </div>
             </div>
-            :<></>}
+                : <></>}
         </div>
-    )
+    </>)
 }
 
 export default NewsItem

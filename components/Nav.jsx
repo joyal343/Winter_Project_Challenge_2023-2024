@@ -53,7 +53,7 @@ const Nav = () => {
                         <div className="nav_auth">{
                             isLoggedIn ?
                                 <a 
-                                    className="flex gap-3 items-center mr-4"
+                                    className="flex gap-3 items-center mr-4 text-lg"
                                     href="/admin/posts"
                                 >
                                     {userName}

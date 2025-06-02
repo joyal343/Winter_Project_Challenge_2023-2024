@@ -5,9 +5,11 @@ import NewsItem from '@components/NewsItem';
 import Search from '@components/Search';
 import DropdownMobile from '@components/DropdownMobile';
 import { MyContext } from "@/context";
+import Loader from "@components/Loader";
 
 const NewsItemsList = ({ posts, isMobile }) => {
     // Pagination also needs to be added
+    
 
     return (
         <div className='flex flex-col items-center sm:block w-[100%] sm:w-[85%] '>
@@ -29,16 +31,17 @@ const NewsItemsList = ({ posts, isMobile }) => {
     )
 }
 
-
+// // Main Page Component
 const page = () => {
     const { windowSize, setWindowSize } = useContext(MyContext)
     const [currPosts, setCurrPosts] = useState([]); // Posts Displayed on Screen
+    const [isLoading, setIsLoading] = useState(true);
     
     const filterOptions = { // Options displayed in mobile horizontal dropdown
         Date: [
-          "All Date",
-          "Last 30 Days",
-          "Last 60 Days",
+            "All Date",
+            "Last 30 Days",
+            "Last 60 Days",
           "Last 6 Months",
           "Last 12 Months",
         ],
@@ -51,7 +54,10 @@ const page = () => {
           "Tenders",
         ],
         Department: ["CSE", "ECE", "EEE", "MCE", "CVE"],
-      };
+    };
+    
+    const handleLoading = () => setIsLoading(false)
+    
     // Getting Posts from the Backend
     useEffect(() => {
         const fetchPosts = async () => {
@@ -59,7 +65,10 @@ const page = () => {
             const data = await response.json();
             setCurrPosts(data);
         }
+        handleLoading();
         fetchPosts();
+        
+        
     }, []);
 
     // Function to Handle Search Requests
@@ -78,7 +87,8 @@ const page = () => {
         setCurrPosts(data);
     }
 
-    return (
+    return (<>
+        <Loader isLoading = {isLoading}/>
         <div className='flex flex-col p-5 sm:p-0 sm:flex-row overflow-y-auto'>
             <div className='flex justify-center  w-[100%] sm:w-[30%] sm:pt-10 sm:mx-auto'>
                 {
@@ -99,7 +109,7 @@ const page = () => {
                 />
             </div>
         </div>
-    )
+    </>)
 }
 
 export default page

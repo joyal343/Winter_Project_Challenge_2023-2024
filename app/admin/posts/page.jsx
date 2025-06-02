@@ -6,6 +6,7 @@ import DropdownMobile from '@components/DropdownMobile';
 import Example from "@components/Modal";
 import { useState, useEffect, useContext } from 'react';
 import { MyContext } from "@/context";
+import Loader from "@components/Loader";
 
 const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
     // Pagination also needs to be added
@@ -15,9 +16,11 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
             <div className="flex items-center">
                 <div className="text-[20px] sm:text-[20px] text-gray-500">{"Results " + posts.length}</div>
                 <div className="hidden sm:block ml-[auto] my-[auto]">
-                    <Example 
+                    <Example
+                        isMobile={false} 
+                        styles = "w-8 h-8 rounded-full border-gray-700"
                         callback={() => { handleSearch("", [true, false, false, false, false], "", "") }} 
-                        styles = "w-8 h-8 rounded-full"
+
                     />
                 </div>
             </div>
@@ -62,9 +65,10 @@ const page = () => {
     };
 
     const { windowSize, setWindowSize } = useContext(MyContext);
+    const [isLoading, setIsLoading] = useState(true);
+    const [currPosts, setCurrPosts] = useState([]); // Posts Displayed on Screen
 
-    // Posts Displayed on Screen
-    const [currPosts, setCurrPosts] = useState([]);
+    const handleLoading = () => setIsLoading(false)
 
     // Getting Posts from the Backend
     useEffect(() => {
@@ -73,7 +77,9 @@ const page = () => {
             const data = await response.json();
             setCurrPosts(data);
         }
+        handleLoading();
         fetchPosts();
+        
     }, []);
 
     // Function to Delete a Post
@@ -102,16 +108,20 @@ const page = () => {
         const data = await response.json();
         setCurrPosts(data);
     }
-    return (
-        <div className={"flex w-[100%] p-8 sm:p-0"}>
+    return (<>
+        <Loader isLoading = {isLoading}/>
+        <div className={"flex w-[100%] p-4 sm:p-0"}>
             {
                 windowSize.width >= 640 ? 
                 <></>    
                     :
                 <div className="fixed bottom-4 left-4 z-50">
+                    { !isLoading &&
                     <Example 
-                        styles = "w-16 h-16 rounded-full bg-white"
-                    />
+                        isMobile = {true}
+                        styles = "w-16 h-16 rounded-full bg-white border-sky-700 "
+                        callback={() => { handleSearch("", [true, false, false, false, false], "", "") }} 
+                    />}
                 </div>
             }
             <div className={"hidden sm:flex sm:flex-col sm:w-[15%]"}>
@@ -149,7 +159,7 @@ const page = () => {
                 </div>
             </div>
         </div>
-    )
+    </>)
 }
 
 export default page
