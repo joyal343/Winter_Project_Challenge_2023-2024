@@ -15,7 +15,7 @@ const NewsItem = (props) => {
     const [type, setType] = useState("");
     const [dept, setDept] = useState("");
     const [file, setFile] = useState("");
-    const [img, setImg] = useState("");
+    
 
 
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -63,14 +63,14 @@ const NewsItem = (props) => {
             type = {type}
             dept = {dept}
             file = {file} 
-            img ={img}
+            
             // Functions to update the data to be Transmitted
             setType = { setType}
             setDept = {setDept}
             setTitle = {setTitle}
             setDesc = {setDesc}
             setFile = {setFile}
-            setImg = {setImg}
+            
             callback = {props.callback}
         />
         <div

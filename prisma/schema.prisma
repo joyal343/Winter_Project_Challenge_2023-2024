@@ -15,7 +15,6 @@ model Record {
   type          String
   department    String
   fileLocation  String?
-  imageLocation String?
 }
 
 model User {

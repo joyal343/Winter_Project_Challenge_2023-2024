@@ -1,16 +1,14 @@
 "use client"
 
-import Image from 'next/image';
 import { useEffect, useState } from "react";
 import Loader from "@components/Loader";
 
 export default function Page({ params }) {
     
-    const [img, setImg] = useState("")
+    
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [date, setDate] = useState("")
-    const [idVal, setIdVal] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -39,7 +37,7 @@ export default function Page({ params }) {
     async function fetchAnnouncement() {
         try {
             const { id } = await params;
-            setIdVal(id);
+            
             const response = await fetch(`/api/news/announcement`, {
                 method: 'POST',
                 headers: {
@@ -55,7 +53,7 @@ export default function Page({ params }) {
             const data = await response.json();
             console.log(data);
             
-            setImg(data.imageLocation);
+            
             setTitle(data.title);
             setDesc(data.description);
             setDate(data.date);
@@ -75,7 +73,7 @@ export default function Page({ params }) {
         <div className="flex flex-col sm:grid sm:grid-cols-3 sm:grid-rows-[auto] p-5 sm:p-0  w-full sm:gap-2">
 
             <div className="flex flex-col sm:col-span-2 sm:pl-16 sm:mt-5 mb-6 sm:mb-4 ">
-                {title && <h1 className="font-bold border-b-[3px] border-[#0384c8] text-2xl sm:text-4xl mb-4 py-5">{title}</h1>}
+                {title && <div className="flex font-bold border-b-[3px] border-[#0384c8] text-2xl sm:text-4xl mb-4 py-5">{title}</div>}
                 <p className="mb-4">{
                     date && 
                     ((date.substring(8, 10) === "01" ?
@@ -94,19 +92,7 @@ export default function Page({ params }) {
                     {title && <a className="cursor-pointer" onClick={()=>{DownloadAttachment()}}>Download Attachment</a>} 
                 </p>
              </div >
-              <div className="sm:flex items-start justify-center sm:col-span-1 text-xl rounded-lg mb-6 sm:h-[50%] sm:pt-5 sm:mt-20">
-                {img &&
-                    <div className="w-[100%] sm:w-[80%] sm:h-[80%] object-cover ">
-                        <Image
-                            src={img}
-                            alt="Image for Announcement"
-                            className="w-full h-full object-cover rounded-lg"
-                            width={500}
-                            height={500}
-                        />
-                    </div>
-                }
-            </div>
+              <div className="sm:flex items-start justify-center sm:col-span-1 text-xl rounded-lg mb-6 sm:h-[50%] sm:pt-5 sm:mt-20"></div>
             
         </div>
     </>);

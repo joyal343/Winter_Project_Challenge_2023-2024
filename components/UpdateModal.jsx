@@ -12,7 +12,7 @@ export default function UpdateModal(props) {
   const handleTitle = (e) => props.setTitle(e.target.value)
   const handleDesc = (e) => props.setDesc(e.target.value)
   const handleFile = (e) => props.setFile(e.target.files?.[0])
-  const handleImg = (e) => props.setImg(e.target.files?.[0])
+  
   
 
   // Function to Send Data to Backend
@@ -31,7 +31,7 @@ export default function UpdateModal(props) {
     data.set('dept', props.dept);
     data.set('id',props.id);
     if (props.file) data.set('file', props.file); 
-    if (props.img) data.set('img', props.img); 
+    
     
     
     // Logging all items in the FormData object
@@ -49,7 +49,6 @@ export default function UpdateModal(props) {
     handleType("")
     handleDept("")
     props.setFile(null)
-    props.setImg(null)
 
     if (!res.ok) throw new Error(await res.text());
     props.callback()
@@ -83,7 +82,7 @@ export default function UpdateModal(props) {
                   <form onSubmit={onSubmit} className="mt-2 flex flex-col">
                     <label htmlFor="input-title">Title</label>
                     <input id="input-title" name="title" type="text"
-                      className="text-sm border border-gray-500 mb-3 sm:mb-4"
+                      className="text-sm border border-gray-500 p-2 mb-3 sm:mb-4"
                       value={props.title}
                       onChange={handleTitle}
                     />
@@ -101,7 +100,7 @@ export default function UpdateModal(props) {
                     </div>
                     <label htmlFor="input-desc"> Description </label>
                     <textarea id='input-desc' name='desc'
-                      className="text-sm border border-gray-500 h-36 outline-none mb-4"
+                      className="text-sm border border-gray-500 p-2 h-36 outline-none mb-4"
                       value={props.desc}
                       onChange={handleDesc}
                     />
@@ -113,14 +112,7 @@ export default function UpdateModal(props) {
                       type="file"
                       onChange={handleFile}
                     />
-                    <label htmlFor="file" className='mb-2'> New Image </label>
-                    <input 
-                      name="img"
-                      className='border border-gray-500 mb-4'
-                      type="file"
-                      accept = "image/*"
-                      onChange={handleImg}
-                      />
+                    
   
 
                     {/* Submit and Cancel */}

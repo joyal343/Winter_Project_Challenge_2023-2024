@@ -9,7 +9,6 @@ import { v4 as uuidv4 } from 'uuid';
 export async function POST(req){
     const data = await req.formData();
     const file = data.get('file');
-    const img = data.get('img');
     
 
     // Connect to DB
@@ -29,13 +28,7 @@ export async function POST(req){
         record.data.fileLocation = fileLocation;
     }
     
-    if (img && img.size) {
-        const imgBytes = await img.arrayBuffer();
-        const imgBuffer = Buffer.from(imgBytes);
-        const imgLocation = path.join(process.cwd(), "public", "imageStore", uuidv4() + path.extname(img.name));
-        await writeFile(imgLocation, imgBuffer);
-        record.data.imageLocation = `/imageStore/${path.basename(imgLocation)}`;
-    }
+    
  
     await prisma.record.create(record)
     prisma.$disconnect()
@@ -65,7 +58,6 @@ export const PUT = async (req) => {
     try {
         const data = await req.formData();
         const file = data.get('file');
-        const img = data.get('img');
         const id = data.get('id');
         // Connect to DB   
         const prisma = new PrismaClient()
@@ -84,13 +76,7 @@ export const PUT = async (req) => {
             recordData.fileLocation = fileLocation;
         }
             
-        if (img && img.size) {
-            const imgBytes = await img.arrayBuffer();
-            const imgBuffer = Buffer.from(imgBytes);
-            const imgLocation = path.join(process.cwd(), "public", "imageStore", uuidv4() + path.extname(img.name));
-            await writeFile(imgLocation, imgBuffer);
-            recordData.imageLocation = `/imageStore/${path.basename(imgLocation)}`;
-        }
+        
     
     
         

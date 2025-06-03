@@ -15,8 +15,6 @@ export default function Example(props) {
   const [type, setType] = useState("");
   const [dept, setDept] = useState("");
   const [file, setFile] = useState("");
-  const [img, setImg] = useState("");
-  const [banner, setBanner] = useState("");
 
   // Functions to update the data to be Transmitted
   const handleType = (value) => setType(value)
@@ -24,7 +22,6 @@ export default function Example(props) {
   const handleTitle = (e) => setTitle(e.target.value)
   const handleDesc = (e) => setDesc(e.target.value)
   const handleFile = (e) => setFile(e.target.files?.[0])
-  const handleImg = (e) => setImg(e.target.files?.[0])
   
 
   // Function to Send Data to Backend
@@ -42,8 +39,6 @@ export default function Example(props) {
     data.set('type', type);
     data.set('dept', dept);
     if (file) data.set('file', file); 
-    if (img) data.set('img', img); 
-    if (banner) data.set('banner', banner);
     
     // Logging all items in the FormData object
     for (const [key, value] of data.entries()) {
@@ -60,8 +55,7 @@ export default function Example(props) {
     handleType("")
     handleDept("")
     setFile(null)
-    setImg(null)
-    setBanner(null)
+    
 
     if (!res.ok) throw new Error(await res.text());
     props.callback()
@@ -128,7 +122,7 @@ export default function Example(props) {
                     </div>
                     <label htmlFor="input-desc"> Description </label>
                     <textarea id='input-desc' name='desc'
-                      className="text-sm border border-gray-500 rounded-md h-36 outline-none mb-4"
+                      className="text-sm border border-gray-500 p-2 rounded-md h-36 outline-none mb-4"
                       value={desc}
                       onChange={handleDesc}
                     />
@@ -139,14 +133,7 @@ export default function Example(props) {
                       type="file"
                       onChange={handleFile}
                     />
-                    <label htmlFor="file" className='mb-2'> Image </label>
-                    <input 
-                      name="img"
-                      className='border border-gray-500 mb-4'
-                      type="file"
-                      accept = "image/*"
-                      onChange={handleImg}
-                      />
+                    
   
 
                     {/* Submit and Cancel */}
