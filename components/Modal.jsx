@@ -95,7 +95,7 @@ export default function Example(props) {
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             {/* Modal Content - Model Panel has 2 child div's inside */}
-            <DialogPanel transition className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+            <DialogPanel transition className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-4 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
             >
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="mt-3 text-center sm:mt-0 sm:text-left">
@@ -110,7 +110,7 @@ export default function Example(props) {
                   <form onSubmit={onSubmit} className="mt-2 flex flex-col">
                     <label htmlFor="input-title">Title</label>
                     <input id="input-title" name="title" type="text"
-                      className="text-sm border border-gray-500 mb-3 sm:mb-4"
+                      className="text-sm border border-gray-500 rounded-md p-2 mb-3 sm:mb-4"
                       value={title}
                       onChange={handleTitle}
                     />
@@ -128,14 +128,14 @@ export default function Example(props) {
                     </div>
                     <label htmlFor="input-desc"> Description </label>
                     <textarea id='input-desc' name='desc'
-                      className="text-sm border border-gray-500 h-36 outline-none mb-4"
+                      className="text-sm border border-gray-500 rounded-md h-36 outline-none mb-4"
                       value={desc}
                       onChange={handleDesc}
                     />
                     <label htmlFor="file" className='mb-2'> Pdf </label>
                     <input 
                       name="file"
-                      className='border border-gray-500 mb-4'
+                      className='border border-gray-500 rounded-md mb-4'
                       type="file"
                       onChange={handleFile}
                     />

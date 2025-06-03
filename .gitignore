@@ -6,7 +6,7 @@ learnt.txt
 start_dev.bat
 
 #IGNORE EXISTING MIGRATIONS ?
-/prisma/migrations/* 
+/prisma/migrations/
 
 /public/imageStore/*.jpg
 /public/pdfStore/*.pdf

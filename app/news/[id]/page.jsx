@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import { useEffect, useState } from "react";
 import Loader from "@components/Loader";
 
@@ -96,11 +97,11 @@ export default function Page({ params }) {
               <div className="sm:flex items-start justify-center sm:col-span-1 text-xl rounded-lg mb-6 sm:h-[50%] sm:pt-5 sm:mt-20">
                 {img &&
                     <div className="w-[100%] sm:w-[70%] sm:h-[70%] object-cover ">
-                        <img
+                        <Image
                             src={img}
-                            alt="Header Image"
+                            alt="Image for Announcement"
                             className="w-full h-full object-cover rounded-lg"
-                            />
+                        />
                     </div>
                 }
             </div>
