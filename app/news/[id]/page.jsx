@@ -96,11 +96,13 @@ export default function Page({ params }) {
              </div >
               <div className="sm:flex items-start justify-center sm:col-span-1 text-xl rounded-lg mb-6 sm:h-[50%] sm:pt-5 sm:mt-20">
                 {img &&
-                    <div className="w-[100%] sm:w-[70%] sm:h-[70%] object-cover ">
+                    <div className="w-[100%] sm:w-[80%] sm:h-[80%] object-cover ">
                         <Image
                             src={img}
                             alt="Image for Announcement"
                             className="w-full h-full object-cover rounded-lg"
+                            width={500}
+                            height={500}
                         />
                     </div>
                 }
