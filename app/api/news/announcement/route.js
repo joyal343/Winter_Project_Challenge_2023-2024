@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
+//  Return post by ID
 export async function POST(request) {
     try {
         const { id } = await request.json();

@@ -40,7 +40,7 @@ export default function UpdateModal(props) {
     }
 
     // Submitting Data to Backend
-    const res = await fetch('/api/news/update', {
+    const res = await fetch('/api/news/', {
       method: "PUT",
       body: data
     })

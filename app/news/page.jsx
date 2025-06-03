@@ -9,8 +9,6 @@ import Loader from "@components/Loader";
 
 const NewsItemsList = ({ posts, isMobile }) => {
     // Pagination also needs to be added
-    
-
     return (
         <div className='flex flex-col items-center sm:block w-[100%] sm:w-[85%] '>
             <div className="text-[20px] sm:text-[20px] mb-5 text-gray-500">{"Results " + posts.length}</div>
@@ -73,7 +71,7 @@ const page = () => {
 
     // Function to Handle Search Requests
     async function handleSearch(text, pDate, type, dept) {
-        console.log("Search Initiated")
+        console.log("Search Text: ", text, "Date: ", pDate, "Type: ", type, "Dept: ", dept);
         const response = await fetch('/api/news/search', {
             method: "POST",
             body: JSON.stringify({

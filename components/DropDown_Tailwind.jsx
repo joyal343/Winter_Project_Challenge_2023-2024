@@ -7,14 +7,9 @@ const DropdownMenu_Tailwind = ({ title, options, handler }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(false);
     const [newTitle, setNewTitle] = useState("");
-    const [animationState, setAnimationState] = useState("");
 
     const toggleMenu = () => setIsOpen(!isOpen)
-    const openMenu = () => {
-        setIsOpen(true)
-
-    }
-    const closeMenu = () => setIsOpen(false)
+    
     const handleOptionClick = (option) => {
         setSelectedOption(true);
         setIsOpen(false);

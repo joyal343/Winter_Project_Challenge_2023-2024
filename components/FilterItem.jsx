@@ -5,9 +5,8 @@ const FilterItem = (props) => {
     const handleClick = () => {
         props.setState(prevState => {
             return prevState.map((elt, index) => {
-                if (index === props.ind) {    
+                if (index === props.ind)   
                     return !elt;
-                }
                 else
                     return props.type ?  prevState[index] : false;
             });

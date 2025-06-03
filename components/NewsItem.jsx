@@ -27,6 +27,7 @@ const NewsItem = (props) => {
 
     async function handleUpdate(id) {
         try {
+            // Searchs based on ID
             const response = await fetch('/api/news/update', {
                 method: 'POST',
                 headers: {
@@ -55,8 +56,8 @@ const NewsItem = (props) => {
         <>
         <UpdateModal 
             open = {open}
-            setOpen = {setOpen}
-            id = {props.id}
+             setOpen = {setOpen}
+          id = {props.id}
             title = {title}
             desc = {desc}
             type = {type}
@@ -70,7 +71,7 @@ const NewsItem = (props) => {
             setDesc = {setDesc}
             setFile = {setFile}
             setImg = {setImg}
-            callback = {()=>{console.log("Update Done")}}
+            callback = {props.callback}
         />
         <div
             className={"hover:scale-[1.02] transition-transform duration-300 hover:cursor-pointer w-[100%] flex gap-2 sm:gap-10 mb-5 py-6 px-4 rounded-md shadow-lg  text-nav  bg-white opacity-90"}
@@ -86,7 +87,7 @@ const NewsItem = (props) => {
             }
             <div className='flex-[9] sm:flex-[8]' onClick={gotoAnnouncement}>
                 <div
-                    className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#8B80F9] text-[20px] sm:text[28px] mb-2 inline-block"}
+                    className={"text-[var(--text-col-dark)] font-bold border-b-[3px] border-[#0384c8] text-[20px] sm:text[28px] mb-2 inline-block"}
                 >
                     {props.title}
                 </div>

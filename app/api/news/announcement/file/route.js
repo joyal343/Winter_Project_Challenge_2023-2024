@@ -1,21 +1,28 @@
 import fs from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
-
-export async function GET(req) {
-  
-  try {
-    const filePath = path.join(process.cwd(), "public", "sample-file.ext"); // Change the file path accordingly
-    console.log(filePath);
+import { PrismaClient } from "@prisma/client"; 
+const prisma = new PrismaClient()
+     
+ export async function POST(req){
+try {
+    const { id } = await req.json();
+    
+    const post = await prisma.record.findUnique({
+        where: { id: id },
+    });
+    
+    const filePath = post.fileLocation
     const fileBuffer = fs.readFileSync(filePath);
+    
     
     return new NextResponse(fileBuffer, {
       headers: {
-        "Content-Disposition": "attachment; filename=sample-file.ext",
-        "Content-Type": "application/octet-stream",
+        "Content-Disposition": `attachment; filename=${id}.pdf` ,
+       "Content-Type": "application/octet-stream",
       },
     });
   } catch (error) {
+    console.error("Error fetching file:", error); 
     return new NextResponse("File not found", { status: 404 });
   }
 }

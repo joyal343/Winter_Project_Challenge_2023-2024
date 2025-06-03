@@ -9,7 +9,15 @@ const SearchBar = (props) => {
     const [pDate, setPDate] = useState(new Array(5).fill(false));
     const [type, setType] = useState(new Array(6).fill(false));
     const [dept, setDept] = useState(new Array(5).fill(false));
-    const handleChange = (e) => setText(e.target.value)
+    
+    const handleChange = (e) =>  setText(e.target.value)
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            props.handleSearch(text, pDate, type, dept);
+        }
+    }
+
     return (
 
         <div className={"flex-col flex bg-white rounded-md shadow-lg p-4 h-[125vh] opacity-90"} >
@@ -18,6 +26,7 @@ const SearchBar = (props) => {
                 <div className="inline min-w-[30px] margin-auto">
                     <button
                         onClick={() => { props.handleSearch(text, pDate, type, dept) }}
+                        onKeyDown={handleKeyDown}
                         className="w-[20px] h-[20px]"
                     >
                         <Image
@@ -43,16 +52,11 @@ const SearchBar = (props) => {
             <div className="filter_head">Publishing Date</div>
             {/* Filter Component Needs To be Created */}
             <ul className="filter_item">
-                <FilterItem
-                    state={pDate}
-                    setState={setPDate}
-                    title="All Date"
-                    ind={0}
-                />
-                <FilterItem state={pDate} setState={setPDate} title="Last 30 Days" ind={1} />
-                <FilterItem state={pDate} setState={setPDate} title="Last 60 Days" ind={2} />
-                <FilterItem state={pDate} setState={setPDate} title="Last 6 Months" ind={3} />
-                <FilterItem state={pDate} setState={setPDate} title="Last 12 Months" ind={4} />
+                <FilterItem type={false} state={pDate} setState={setPDate} title="All Date" ind={0} />
+                <FilterItem type={false} state={pDate} setState={setPDate} title="Last 30 Days" ind={1} />
+                <FilterItem type={false} state={pDate} setState={setPDate} title="Last 60 Days" ind={2} />
+                <FilterItem type={false} state={pDate} setState={setPDate} title="Last 6 Months" ind={3} />
+                <FilterItem type={false} state={pDate} setState={setPDate} title="Last 12 Months" ind={4} />
             </ul>
             <div className="filter_head">Category</div>
 

@@ -19,7 +19,7 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
                     <Example
                         isMobile={false} 
                         styles = "w-8 h-8 rounded-full border-gray-700"
-                        callback={() => { handleSearch("", [true, false, false, false, false], "", "") }} 
+                        callback={() => handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))  } 
 
                     />
                 </div>
@@ -39,6 +39,7 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
                     hasImg={false}
                     imgURL={".assets/uploaded_images/" + post.picture}
                     isMobile={isMobile}
+                    callback = {()=>handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))}
                 />
             })}
         </div>
@@ -91,7 +92,7 @@ const page = () => {
             })
         });
         const res = await response.json();
-        handleSearch("", [true, false, false, false, false], "", "")
+        handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))
     }
 
     // Function to Handle Search Requests
@@ -111,7 +112,7 @@ const page = () => {
     return (<>
         <Loader isLoading = {isLoading}/>
         <div className={"flex w-[100%] p-4 sm:p-0"}>
-            {
+           {
                 windowSize.width >= 640 ? 
                 <></>    
                     :
@@ -120,7 +121,7 @@ const page = () => {
                     <Example 
                         isMobile = {true}
                         styles = "w-16 h-16 rounded-full bg-white border-sky-700 "
-                        callback={() => { handleSearch("", [true, false, false, false, false], "", "") }} 
+                        callback={() => { handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false)) }} 
                     />}
                 </div>
             }
@@ -140,6 +141,7 @@ const page = () => {
                             isMobile={windowSize.width >= 640 ? false : true}
                             handleDel={handleDel}
                             handleSearch={handleSearch}
+                            callback={() => { handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false)) }}
                         />
                     </div>
                     <div className='flex justify-center  sm:w-[20%] sm:pt-10 sm:mx-auto'>
