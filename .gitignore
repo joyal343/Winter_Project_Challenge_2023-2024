@@ -8,9 +8,8 @@ start_dev.bat
 #IGNORE EXISTING MIGRATIONS ?
 /prisma/migrations/* 
 
-/public/bannerStore/*
-/public/imageStore/*
-/public/pdfStore/*
+/public/imageStore/*.jpg
+/public/pdfStore/*.pdf
 
 # dependencies
 /node_modules
