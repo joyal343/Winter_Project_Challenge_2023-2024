@@ -116,11 +116,11 @@ const page = () => {
                 windowSize.width >= 640 ? 
                 <></>    
                     :
-                <div className="fixed bottom-4 left-4 z-50">
+                <div className="fixed bottom-4 left-4 z-10">
                     { !isLoading &&
                     <Example 
                         isMobile = {true}
-                        styles = "w-16 h-16 rounded-full bg-white border-sky-700 "
+                        styles = "w-16 h-16 rounded-full bg-white border-[#0384c8]"
                         callback={() => { handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false)) }} 
                     />}
                 </div>

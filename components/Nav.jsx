@@ -41,15 +41,17 @@ const Nav = () => {
 
                 {windowSize.width >= 640 ?
                     <>
-                        <div className="underline_elt_wrapper">
-                            <Link href='/' className={"nav_links underline_elt "}>Home</Link>
-                        </div>
+                        
                         <div className="underline_elt_wrapper">
                             <Link href='/news' className={"nav_links underline_elt "}>News</Link>
                         </div>
                         <div className="underline_elt_wrapper">
                             <Link href='/news' className={"nav_links underline_elt "}>About</Link>
                         </div>
+                        {isLoggedIn && <div className="underline_elt_wrapper">
+                            <Link href='/admin/posts' className={"nav_links underline_elt "}>Admin</Link>
+                        </div>}
+                        
                         <div className="nav_auth">{
                             isLoggedIn ?
                                 <a 
@@ -98,24 +100,30 @@ const Nav = () => {
             {
                 (windowSize.width < 640) && (
                     <div className={'mob_sidebar_pos flex flex-col gap-5 absolute top-[60px] duration-500 w-full ' + (isMobileOpen ? "left-0" : "-left-full")} >
-                        <div className="underline_elt_wrapper mt-4" onClick={toggleMobSidebar}>
-                            <Link href='/' className={"nav_links underline_elt "}>Home</Link>
-                        </div>
-                        <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
+                        
+                        <div className="underline_elt_wrapper mt-2" onClick={toggleMobSidebar}>
                             <Link href='/news' className={"nav_links underline_elt "}>News</Link>
                         </div>
                         <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
                             <Link href='/news' className={"nav_links underline_elt "}>About</Link>
                         </div>
+                        <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
+                            <Link href='/news' className={"nav_links underline_elt "}>Dashboard</Link>
+                        </div>
+                        <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
+                            <Link href='/news' className={"nav_links underline_elt "}>Posts</Link>
+                        </div>
                         {isLoggedIn ?
-                            <div className="flex items-center mr-4">
-                                <img
-                                    src={`\\assets\\icons\\Club.svg`}
-                                    alt=""
-                                    width={30}
-                                    height={30}
-                                />
+                            <div className="text-xl flex grow pl-[20px] items-end justify-start gap-4">
+                               
                                 {userName}
+                                <img
+                                        src={`\\assets\\icons\\Clubs.svg`}
+                                        alt=""
+                                        width={30}
+                                        height={30}
+                                        className = "border-2 rounded-full border-sky-500 "
+                                    />
                             </div>
                             :
                             <div className="flex flex-col justify-end px-4 grow gap-4" >

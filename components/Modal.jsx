@@ -67,7 +67,7 @@ export default function Example(props) {
       <button onClick={() => { setOpen(!open) }} className ={ 'border justify-center '+props.styles}>
         { props.isMobile ?
         <img
-          src={"\\assets\\icons\\add_blue.svg"}
+          src={"\\assets\\icons\\add_final.svg"}
           width={25}
           height={25}
           className="mx-auto"
