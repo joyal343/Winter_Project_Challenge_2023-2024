@@ -44,15 +44,17 @@ export default function UpdateModal(props) {
       method: "PUT",
       body: data
     })
-
+    
+    console.log("Update Passed Data: ", data)
     // Resetting values to default
+    props.setTitle("")
+    props.setDesc("")
     handleType("")
     handleDept("")
     props.setFile(null)
-
+    
     if (!res.ok) throw new Error(await res.text());
-    props.callback()
-    return;
+    props.callback(data)
   }
 
   return (

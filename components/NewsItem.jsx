@@ -2,22 +2,11 @@
 import { useState } from 'react';
 import styles from './NewsItem.module.css';
 import NewsItemImage from './NewsItemImage.jsx';
-import UpdateModal from './UpdateModal.jsx';
+
 
 const { useRouter } = require('next/navigation');
 
 const NewsItem = (props) => {
-    const [open,setOpen] = useState(false)
-
-    // Data to Be Transmitted
-    const [title, setTitle] = useState("");
-    const [desc, setDesc] = useState("");
-    const [type, setType] = useState("");
-    const [dept, setDept] = useState("");
-    const [file, setFile] = useState("");
-    
-
-
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const router = useRouter();
 
@@ -25,54 +14,11 @@ const NewsItem = (props) => {
         router.push(`/news/${props.id}`);
     }
 
-    async function handleUpdate(id) {
-        try {
-            // Searchs based on ID
-            const response = await fetch('/api/news/update', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id }),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch announcement data');
-            }
-            const data = await response.json();
-            console.log(data);
-            setTitle(data.title) 
-            setDesc(data.description);
-            setType(data.type);
-            setDept(data.department);
-
-            // You can now use 'data' to populate your modal or state
-            setOpen(true);
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    
 
     return (
         <>
-        <UpdateModal 
-            open = {open}
-             setOpen = {setOpen}
-          id = {props.id}
-            title = {title}
-            desc = {desc}
-            type = {type}
-            dept = {dept}
-            file = {file} 
-            
-            // Functions to update the data to be Transmitted
-            setType = { setType}
-            setDept = {setDept}
-            setTitle = {setTitle}
-            setDesc = {setDesc}
-            setFile = {setFile}
-            
-            callback = {props.callback}
-        />
+        
         <div
             className={"hover:scale-[1.02] transition-transform duration-300 hover:cursor-pointer w-[100%] flex gap-2 sm:gap-10 mb-5 py-6 px-4 rounded-md shadow-lg  text-nav  bg-white opacity-90"}
         >
@@ -128,7 +74,7 @@ const NewsItem = (props) => {
                         height={25}
                         alt='Update Announcement'
                         className='filter_light_grey'
-                        onClick={() => { handleUpdate(props.id) }}
+                        onClick={() => { props.handleUpdate(props.id) }}
                     />
 
                 </div>

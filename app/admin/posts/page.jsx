@@ -7,8 +7,9 @@ import Example from "@components/Modal";
 import { useState, useEffect, useContext } from 'react';
 import { MyContext } from "@/context";
 import Loader from "@components/Loader";
+import UpdateModal from '@components/UpdateModal.jsx';
 
-const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
+const NewsItemsList = ({ posts, isMobile, handleDel, handleUpdate, handleSearch }) => {
     // Pagination also needs to be added
 
     return (
@@ -26,21 +27,21 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleSearch }) => {
             </div>
 
             {posts.map((post) => {
-                return <NewsItem
+                return <div id = {post.id} key={post.id}>
+                    <NewsItem
                     title={post.title}
                     date={post.date}
                     desc={post.description}
                     annType={post.type}
                     del={true}
                     id={post.id}
-                    key={post.id}
                     handleDel={handleDel}
-                    // hasImg={post.picture === "" ? false : true}
+                    handleUpdate={handleUpdate}
                     hasImg={false}
                     imgURL={".assets/uploaded_images/" + post.picture}
                     isMobile={isMobile}
-                    callback = {()=>handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))}
-                />
+                    
+                /></div>
             })}
         </div>
     )
@@ -68,6 +69,16 @@ const page = () => {
     const { windowSize, setWindowSize } = useContext(MyContext);
     const [isLoading, setIsLoading] = useState(true);
     const [currPosts, setCurrPosts] = useState([]); // Posts Displayed on Screen
+    const [open,setOpen] = useState(false)
+    
+    // Data to be updated in the Modal
+
+    const [idVal, setIdVal] = useState("");
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [type, setType] = useState("");
+    const [dept, setDept] = useState("");
+    const [file, setFile] = useState(null);
 
     const handleLoading = () => setIsLoading(false)
 
@@ -91,8 +102,14 @@ const page = () => {
                 id: id
             })
         });
-        const res = await response.json();
-        handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))
+        if (!response.ok) {
+            console.error("Failed to delete post with id:", id);
+            return;
+        }
+        console.log(response);
+        setCurrPosts(currPosts.filter(post => post.id !== id));
+        // document.getElementById(id).remove();
+        // handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))
     }
 
     // Function to Handle Search Requests
@@ -109,8 +126,66 @@ const page = () => {
         const data = await response.json();
         setCurrPosts(data);
     }
+
+    async function handleUpdate(id) {
+        try {
+            // Searchs based on ID
+            const response = await fetch('/api/news/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch announcement data');
+            }
+            const data = await response.json();
+            setIdVal(id)
+            setTitle(data.title);
+            setDesc(data.description);
+            setType(data.type);
+            setDept(data.department)
+            setFile(null);
+            setOpen(true);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+
     return (<>
         <Loader isLoading = {isLoading}/>
+        <UpdateModal 
+            open = {open}
+            setOpen = {setOpen}
+            id = {idVal}
+            title = {title}
+            desc = {desc}
+            type = {type}
+            dept = {dept}
+            file = {file} 
+            
+            // Functions to update the data to be Transmitted
+            setType = { setType}
+            setDept = {setDept}
+            setTitle = {setTitle}
+            setDesc = {setDesc}
+            setFile = {setFile}
+            
+            callback = {(data) => {
+                setCurrPosts(currPosts.map(post => {
+                    if (post.id === data.get('id')){
+                        console.log("Updating Post Insides: ", post)
+                        post.title = data.get('title');
+                        post.description = data.get('desc');
+                        post.department = data.get('dept');
+                        post.type = data.get('type');
+                    } 
+                    return post;
+                }))
+            }}
+        />
         <div className={"flex w-[100%] p-4 sm:p-0"}>
            {
                 windowSize.width >= 640 ? 
@@ -139,8 +214,9 @@ const page = () => {
                         <NewsItemsList
                             posts={currPosts}
                             isMobile={windowSize.width >= 640 ? false : true}
-                            handleDel={handleDel}
                             handleSearch={handleSearch}
+                            handleDel={handleDel}
+                            handleUpdate={handleUpdate}
                             callback={() => { handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false)) }}
                         />
                     </div>

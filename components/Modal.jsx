@@ -52,6 +52,8 @@ export default function Example(props) {
     })
 
     // Resetting values to default
+    setTitle("")
+    setDesc("")
     handleType("")
     handleDept("")
     setFile(null)
