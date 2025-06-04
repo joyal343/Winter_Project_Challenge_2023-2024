@@ -20,15 +20,22 @@ A NextJS project for the challenge : Announcement Website
 This will setup a developement server on port 3000
 
 # Endpoints
-1.) */news*
-This endpoint will show a webpage that shows all announcements. This page will also has a search bar and filters.
+1.) */news* 
+Here the users will be able to view all existing announcements
 ![News Image](./public/assets/uploaded_images/news.png)
 
 2.) */admin/posts*
 Here the authenticated users will be able to post, edit and delete announcements.
 ![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)
-![Admin Posts 2](./public/assets/uploaded_images/create_post.png)
 
 3.) */admin/dashbard*
 Here the authenticated users will be able view total number of posts and documents uploaded.
 ![Admin Dashboard 1](./public/assets/uploaded_images/admin_dashboard.png)
+
+4.) */login*
+Here users can login to the site.
+![Login 1](./public/assets/uploaded_images/Login.png)
+
+5.) */register*
+Here users can register onto the site.
+![Register 1](./public/assets/uploaded_images/Register.png)
