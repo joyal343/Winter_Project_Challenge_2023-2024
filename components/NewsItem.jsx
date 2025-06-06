@@ -38,7 +38,7 @@ const NewsItem = (props) => {
                     {props.title}
                 </div>
                 <div className="text-[18px] mb-2 ">
-                    {props.desc && (props.desc.length > 100 ? props.desc.substring(0, 100) + "..." : props.desc)}
+                    {props.desc && (props.desc.length > 40 ? props.desc.substring(0, 40) + "..." : props.desc)}
                 </div>
                 <div className="text-[14px]">
                     {

@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import DropdownMenu_Tailwind from '@components/DropDown_Tailwind';
 
-
 export default function Example(props) {
   // Used to open and close the modal
   const [open, setOpen] = useState(false)
@@ -51,6 +50,9 @@ export default function Example(props) {
       body: data
     })
 
+    const resData = await res.json();
+    console.log("Created Record:",resData)
+    props.callback(resData);
     // Resetting values to default
     setTitle("")
     setDesc("")
@@ -60,7 +62,6 @@ export default function Example(props) {
     
 
     if (!res.ok) throw new Error(await res.text());
-    props.callback()
     return;
   }
 

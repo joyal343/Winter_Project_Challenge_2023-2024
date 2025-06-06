@@ -29,11 +29,12 @@ export async function POST(req){
     }
     
     
- 
-    await prisma.record.create(record)
+
+    const createdRecord = await prisma.record.create(record)
+    console.log("Created Record: ", createdRecord);
     prisma.$disconnect()
 
-    return NextResponse.json({success:true});
+    return new Response(JSON.stringify(createdRecord),{status:200});
 
 }
 

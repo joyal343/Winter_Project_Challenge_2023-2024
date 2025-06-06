@@ -2,14 +2,14 @@
 import SideBar from "@components/SideBar";
 import NewsItem from "@components/NewsItem";
 import Search from "@components/Search";
-import DropdownMobile from '@components/DropdownMobile';
+import DropdownMobile from "@components/DropdownMobile";
 import Example from "@components/Modal";
 import { useState, useEffect, useContext } from 'react';
 import { MyContext } from "@/context";
 import Loader from "@components/Loader";
 import UpdateModal from '@components/UpdateModal.jsx';
 
-const NewsItemsList = ({ posts, isMobile, handleDel, handleUpdate, handleSearch }) => {
+const NewsItemsList = ({ posts, isMobile, handleDel, handleUpdate, handleSearch, setCurrPosts }) => {
     // Pagination also needs to be added
 
     return (
@@ -20,13 +20,14 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleUpdate, handleSearch 
                     <Example
                         isMobile={false} 
                         styles = "w-8 h-8 rounded-full border-gray-700"
-                        callback={() => handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))  } 
+                        callback={(newPost) => setCurrPosts((prevPosts) => [...prevPosts, newPost])} 
 
                     />
                 </div>
             </div>
 
             {posts.map((post) => {
+                console.log("Post: ", post);
                 return <div id = {post.id} key={post.id}>
                     <NewsItem
                     title={post.title}
@@ -106,7 +107,7 @@ const page = () => {
             console.error("Failed to delete post with id:", id);
             return;
         }
-        console.log(response);
+        console.log("DELETE RESPONSE:",response);
         setCurrPosts(currPosts.filter(post => post.id !== id));
         // document.getElementById(id).remove();
         // handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false))
@@ -173,6 +174,7 @@ const page = () => {
             setDesc = {setDesc}
             setFile = {setFile}
             
+            // Performs update to posts in frontend
             callback = {(data) => {
                 setCurrPosts(currPosts.map(post => {
                     if (post.id === data.get('id')){
@@ -217,6 +219,7 @@ const page = () => {
                             handleSearch={handleSearch}
                             handleDel={handleDel}
                             handleUpdate={handleUpdate}
+                            setCurrPosts={setCurrPosts}
                             callback={() => { handleSearch("", [true, false, false, false, false], new Array(6).fill(false), new Array(5).fill(false)) }}
                         />
                     </div>
