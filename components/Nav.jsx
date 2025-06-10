@@ -108,10 +108,10 @@ const Nav = () => {
                             <Link href='/news' className={"nav_links underline_elt "}>About</Link>
                         </div>
                         { isLoggedIn && <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
-                            <Link href='/news' className={"nav_links underline_elt "}>Dashboard</Link>
+                            <Link href='/admin/dashboard' className={"nav_links underline_elt "}>Dashboard</Link>
                         </div>}
                         {isLoggedIn && <div className="underline_elt_wrapper" onClick={toggleMobSidebar}>
-                            <Link href='/news' className={"nav_links underline_elt "}>Posts</Link>
+                            <Link href='/admin/posts' className={"nav_links underline_elt "}>Posts</Link>
                         </div>}
                         {isLoggedIn ?
                             <div className="text-xl flex grow pl-[20px] items-end justify-start gap-4">

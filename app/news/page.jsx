@@ -32,7 +32,11 @@ const NewsItemsList = ({ posts, isMobile }) => {
 // // Main Page Component
 const page = () => {
     const { windowSize, setWindowSize } = useContext(MyContext)
-    const [currPosts, setCurrPosts] = useState([]); // Posts Displayed on Screen
+    
+    // Posts Displayed on Screen
+    const [currPosts, setCurrPosts] = useState([]); 
+    
+    // Loading State
     const [isLoading, setIsLoading] = useState(true);
     
     const filterOptions = { // Options displayed in mobile horizontal dropdown
@@ -54,6 +58,7 @@ const page = () => {
         Department: ["CSE", "ECE", "EEE", "MCE", "CVE"],
     };
     
+    // This Function is used to modify the loading state
     const handleLoading = () => setIsLoading(false)
     
     // Getting Posts from the Backend
@@ -64,9 +69,7 @@ const page = () => {
             setCurrPosts(data);
         }
         handleLoading();
-        fetchPosts();
-        
-        
+        fetchPosts();   
     }, []);
 
     // Function to Handle Search Requests

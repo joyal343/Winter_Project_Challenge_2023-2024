@@ -28,7 +28,10 @@ const NewsItemsList = ({ posts, isMobile, handleDel, handleUpdate, handleSearch,
 
             {posts.map((post) => {
                 console.log("Post: ", post);
-                return <div id = {post.id} key={post.id}>
+                return <div 
+                    className="w-[100%]"
+                    id = {post.id} key={post.id}
+                >
                     <NewsItem
                     title={post.title}
                     date={post.date}
