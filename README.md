@@ -25,29 +25,32 @@ This is a website that can display and manage announcements ( All CRUD operation
 
 # Endpoints
 1.) */news* 
-Here the users will be able to view all existing announcements
-![News](./public/assets/uploaded_images/news.png)
-<img src="./public/assets/uploaded_images/Home_Mob.jpg" alt="News Mobile" width="300"/>
+Here the users will be able to view all existing announcements<br/>
+![News](./public/assets/uploaded_images/news.png)<br/>
+Mobile View<br/>
+<img src="./public/assets/uploaded_images/Home_Mob.jpg" alt="News Mobile" width="300"/><br/>
 
 2.) */admin/posts*
-Here the authenticated users will be able to post, edit and delete announcements.
-![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)
-<img src="./public/assets/uploaded_images/Admin_Mob.jpg" alt="News Mobile" width="300"/>
-<img src="./public/assets/uploaded_images/Admin_Mob_2.jpg" alt="News Mobile" width="300"/>
+Here the authenticated users will be able to post, edit and delete announcements.<br/>
+![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)<br/>
+Mobile View<br/>
+<img src="./public/assets/uploaded_images/Admin_Mob.jpg" alt="News Mobile" width="300"/> <br/>
+<img src="./public/assets/uploaded_images/Admin_Mob_2.jpg" alt="News Mobile" width="300"/><br/>
 
 3.) */admin/dashbard*
-Here the authenticated users will be able view total number of posts and documents uploaded.
-![Admin Dashboard 1](./public/assets/uploaded_images/admin_dashboard.png)
+Here the authenticated users will be able view total number of posts and documents uploaded.<br/>
+![Admin Dashboard 1](./public/assets/uploaded_images/admin_dashboard.png)<br/>
 
 4.) */news/[id]*
-Dynamic route that returns a dynamically created page for each announcment.
-![Dynamic Page](./public/assets/uploaded_images/DynamicPage.jpg)   
-<img src="./public/assets/uploaded_images/Dynamic_Ann_Mob.jpg" alt="News Mobile" width="300"/>
+Dynamic route that returns a dynamically created page for each announcment.<br/>
+![Dynamic Page](./public/assets/uploaded_images/DynamicPage.jpg)<br/>
+Mobile View<br/>
+<img src="./public/assets/uploaded_images/Dynamic_Ann_Mob.jpg" alt="News Mobile" width="300"/><br/>
 
 4.) */login*
-Here users can login to the site.
-![Login 1](./public/assets/uploaded_images/Login.png)
+Here users can login to the site.<br/>
+![Login 1](./public/assets/uploaded_images/Login.png)<br/>
 
 5.) */register*
-Here users can register onto the site.
-![Register 1](./public/assets/uploaded_images/Register.png)
+Here users can register onto the site.<br/>
+![Register 1](./public/assets/uploaded_images/Register.png)<br/>
