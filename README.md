@@ -1,7 +1,7 @@
 # Winter_Project_Challenge_2023-2024
 This is a website that can display and manage announcements ( All CRUD operationas are implemented ) made by a college. It creates dynamic webpages for each announcement created.  
 
-# Technologies
+## Technologies
 ```
 1.) Nextjs 
 2.) Postgres as Database
@@ -9,7 +9,7 @@ This is a website that can display and manage announcements ( All CRUD operation
 ``` 
 
 
-# Setup
+## Setup
 ```
 1.) Create a .env in same folder as project and give DATABASE_URL="<your urll>"
 2.) To Initialize Prisma use these commands on the project folder: 
@@ -23,9 +23,9 @@ This is a website that can display and manage announcements ( All CRUD operation
 
 ```
 
-# Endpoints
-1.) */news* 
-Here the users will be able to view all existing announcements<br/>
+## Endpoints
+1.) */news* <br/>
+Here the users will be able to view all existing announcements<br/><br/>
 ![News](./public/assets/uploaded_images/news.png)<br/>
 Mobile View<br/>
 <img src="./public/assets/uploaded_images/Home_Mob.jpg" alt="News Mobile" width="300"/><br/>
