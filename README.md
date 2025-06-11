@@ -26,31 +26,31 @@ This is a website that can display and manage announcements ( All CRUD operation
 ## Endpoints
 1.) */news* <br/>
 Here the users will be able to view all existing announcements<br/><br/>
-![News](./public/assets/uploaded_images/news.png)<br/>
-Mobile View<br/>
+![News](./public/assets/uploaded_images/news.png)<br/><br/>
+Mobile View<br/><br/>
 <img src="./public/assets/uploaded_images/Home_Mob.jpg" alt="News Mobile" width="300"/><br/>
 
-2.) */admin/posts*
-Here the authenticated users will be able to post, edit and delete announcements.<br/>
-![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)<br/>
-Mobile View<br/>
+2.) */admin/posts* <br/>
+Here the authenticated users will be able to post, edit and delete announcements.<br/><br/>
+![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)<br/><br/>
+Mobile View<br/><br/>
 <img src="./public/assets/uploaded_images/Admin_Mob.jpg" alt="News Mobile" width="300"/> <br/>
 <img src="./public/assets/uploaded_images/Admin_Mob_2.jpg" alt="News Mobile" width="300"/><br/>
 
-3.) */admin/dashbard*
-Here the authenticated users will be able view total number of posts and documents uploaded.<br/>
+3.) */admin/dashbard*<br/>
+Here the authenticated users will be able view total number of posts and documents uploaded.<br/><br/>
 ![Admin Dashboard 1](./public/assets/uploaded_images/admin_dashboard.png)<br/>
 
-4.) */news/[id]*
-Dynamic route that returns a dynamically created page for each announcment.<br/>
-![Dynamic Page](./public/assets/uploaded_images/DynamicPage.jpg)<br/>
-Mobile View<br/>
+4.) */news/[id]* <br/>
+Dynamic route that returns a dynamically created page for each announcment.<br/><br/>
+![Dynamic Page](./public/assets/uploaded_images/DynamicPage.jpg)<br/><br/>
+Mobile View<br/><br/>
 <img src="./public/assets/uploaded_images/Dynamic_Ann_Mob.jpg" alt="News Mobile" width="300"/><br/>
 
-4.) */login*
-Here users can login to the site.<br/>
+4.) */login*<br/>
+Here users can login to the site.<br/><br/>
 ![Login 1](./public/assets/uploaded_images/Login.png)<br/>
 
-5.) */register*
-Here users can register onto the site.<br/>
+5.) */register*<br/>
+Here users can register onto the site.<br/><br/>
 ![Register 1](./public/assets/uploaded_images/Register.png)<br/>
