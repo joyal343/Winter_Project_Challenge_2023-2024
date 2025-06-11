@@ -26,8 +26,8 @@ This is a website that can display and manage announcements ( All CRUD operation
 # Endpoints
 1.) */news* 
 Here the users will be able to view all existing announcements
-![News Image](./public/assets/uploaded_images/news.png)
-![News Mobile](./public/assets/uploaded_images/Home_Mob.jpg)
+<img src="./public/assets/uploaded_images/news.png" alt="News Image" width="600"/><br/>
+<img src="./public/assets/uploaded_images/Home_Mob.jpg" alt="News Mobile" width="300"/>
 
 2.) */admin/posts*
 Here the authenticated users will be able to post, edit and delete announcements.
