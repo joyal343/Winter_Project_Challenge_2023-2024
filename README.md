@@ -26,18 +26,23 @@ This is a website that can display and manage announcements ( All CRUD operation
 # Endpoints
 1.) */news* 
 Here the users will be able to view all existing announcements
-<img src="./public/assets/uploaded_images/news.png" alt="News Image" width="600"/><br/>
+![News](./public/assets/uploaded_images/news.png)
 <img src="./public/assets/uploaded_images/Home_Mob.jpg" alt="News Mobile" width="300"/>
 
 2.) */admin/posts*
 Here the authenticated users will be able to post, edit and delete announcements.
 ![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)
-![Admin Post Mob 1](./public/assets/uploaded_images/Admin_Mob.jpg)
-![Admin Post Mob 2](./public/assets/uploaded_images/Admin_Mob_2.jpg)
+<img src="./public/assets/uploaded_images/Admin_Mob.jpg" alt="News Mobile" width="300"/>
+<img src="./public/assets/uploaded_images/Admin_Mob_2.jpg" alt="News Mobile" width="300"/>
 
 3.) */admin/dashbard*
 Here the authenticated users will be able view total number of posts and documents uploaded.
 ![Admin Dashboard 1](./public/assets/uploaded_images/admin_dashboard.png)
+
+4.) */news/[id]*
+Dynamic route that returns a dynamically created page for each announcment.
+![Dynamic Page](./public/assets/uploaded_images/DynamicPage.jpg)   
+<img src="./public/assets/uploaded_images/Dynamic_Ann_Mob.jpg" alt="News Mobile" width="300"/>
 
 4.) */login*
 Here users can login to the site.
