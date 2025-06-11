@@ -1,5 +1,5 @@
 # Winter_Project_Challenge_2023-2024
-A NextJS project for the challenge : Announcement Website
+This is a website that can display and manage announcements ( All CRUD operationas are implemented ) made by a college. It creates dynamic webpages for each announcement created.  
 
 # Technologies
 ```
@@ -11,22 +11,29 @@ A NextJS project for the challenge : Announcement Website
 
 # Setup
 ```
-1.) Run Postgres on default port 5432
-2.) run on cmd in project folder : npx prisma migrate dev --name init; 
-3.) run on cmd in project folder : npm i; npm run build; npm run start;
+1.) Create a .env in same folder as project and give DATABASE_URL="<your urll>"
+2.) To Initialize Prisma use these commands on the project folder: 
+        > npx prisma migrate dev --name init
+        > npx prisma generate
+        > npx prisma migrate deploy
+3.) To Deploy the project use these commands: 
+        > npm i
+        > npm run build
+        > npm run start
 
 ```
-
-This will setup a developement server on port 3000
 
 # Endpoints
 1.) */news* 
 Here the users will be able to view all existing announcements
 ![News Image](./public/assets/uploaded_images/news.png)
+![News Mobile](./public/assets/uploaded_images/Home_Mob.jpg)
 
 2.) */admin/posts*
 Here the authenticated users will be able to post, edit and delete announcements.
 ![Admin Posts 1](./public/assets/uploaded_images/admin_posts.png)
+![Admin Post Mob 1](./public/assets/uploaded_images/Admin_Mob.jpg)
+![Admin Post Mob 2](./public/assets/uploaded_images/Admin_Mob_2.jpg)
 
 3.) */admin/dashbard*
 Here the authenticated users will be able view total number of posts and documents uploaded.
